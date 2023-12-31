@@ -32,8 +32,9 @@ stow .
 
 * WINDOW MANAGER
 I use [[https://i3wm.org/][i3]] window manager and [[https://dwm.suckless.org/][dwm]] (mainly) on linux. My workflow in both window managers is quite similar, consisting of two important things. First thing, I usually use standard tile mode or more often just tab mode (with a tab patch in the dwm). Second thing, I use =alt+tab= to switch between the last two workspaces I visited. The rest is just standard as most people use window managers.
-** DWM
-I applied quite a lot of patches (I think) on dwm. Ironically, some of them I don't really use haha..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
+** [[https://github.com/firman-qs/dwm-fqs][DWM]]
+I applied quite a lot of patches (I think) in [[https://github.com/firman-qs/dwm-fqs][dwm on these dotfiles]]. Ironically, some of them I don't really use haha..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
+*** List of dwm Patches
 + [[https://dwm.suckless.org/patches/pertag/][dwm-6.1-pertag_without_bar.diff]]
 + [[https://dwm.suckless.org/patches/actualfullscreen/][dwm-actualfullscreen-20211013-cb3f58a.diff]]
 + [[https://dwm.suckless.org/patches/alwayscenter/][dwm-alwayscenter-20200625-f04cac6.diff]]
@@ -55,8 +56,35 @@ I applied quite a lot of patches (I think) on dwm. Ironically, some of them I do
 + [[https://dwm.suckless.org/patches/tab/][dwm-tab-i3like-20211121-a786211.diff]]
 + [[https://dwm.suckless.org/patches/taglabels/][dwm-taglabels-hide_vacant_tags_funcionality-6.2.diff]]
 + [[https://dwm.suckless.org/patches/xrdb/][dwm-xrdb-6.4.diff]]
-This dwm configuration applies the [[https://dwm.suckless.org/patches/xrdb/][xrdb patch]] so you can set the color scheme using [[https://github.com/dylanaraps/pywal][pywal]] or from static .Xresources files as usual without needing to touch the source file, config.def.h (This also applies to dmenu and terminal st in this doftiles).
+This dwm configuration applies the [[https://dwm.suckless.org/patches/xrdb/][xrdb patch]] so you can set the color scheme using [[https://github.com/dylanaraps/pywal][pywal]] or from static .Xresources files as usual without needing to touch the source file, =config.def.h= (This also applies to dmenu and st in this doftiles). [[https://dwm.suckless.org/patches/statuscmd/][Statuscmd]] patch also applied, so supports *emoji* and *click* in statusbar to run some commands.
+*** How to Install?
+To install my dwm build, run this command inside the =~/.dotfiles/.config/suckless/dwm= directory:
+#+begin_src bash
+sudo make install
+#+end_src
+For keybindings and other configurations please read [[https://github.com/firman-qs/dwm-fqs/blob/a2c042b92be867dc8c50793601affdd9a917ced9/config.def.h][config.def.h]]. Because these dotfiles use keychord patches, please pay close attention to the writing format if you want to customize it.
 ** i3
+[[https://i3wm.org/][i3]] is a pretty straightforward window manager with rich features, my favorite after dwm (because I prefer dynamic tyling over manual). You can install i3 with your Linux distribution's package manager.
+/we also need to install i3-status/
+**** Debian/Ubuntu and his grandchildren
+#+begin_src bash
+sudo apt install i3 i3status
+#+end_src
+**** Fedora and his friends
+#+begin_src bash
+sudo apt install i3 i3status
+#+end_src
+**** Arch and his children
+#+begin_src bash
+sudo pacman -S i3 i3status
+#+end_src
+or if using [[https://github.com/Jguer/yay][yay]]
+#+begin_src bash
+yay -S i3 i3status
+#+end_src
+
+After that, make sure you have moved the [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3][i3]] and [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3status][i3status]] in dotfiles to the appropriate place or use [[https://www.gnu.org/software/stow/][GNU Stow]] as in [[*WHAT IS THIS?][WHAT IS THIS?]].
+
 * CODE EDITOR
 ** Emacs
 ** VSCode
