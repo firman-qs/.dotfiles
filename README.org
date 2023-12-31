@@ -17,7 +17,7 @@
 - [[#dependencies][DEPENDENCIES]]
 
 * WHAT IS THIS?
-This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as GNU Stow to make managing dotfiles on your device easier. If you are using GNU Stow, simply clone this repo in your home directory (ie in =~= or ~/home/username/~) then go to the ~/.dotfiles folder by running the command:
+This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as [[https://www.gnu.org/software/stow/][GNU Stow]] to make managing dotfiles on your device easier. If you are using [[https://www.gnu.org/software/stow/][GNU Stow]], simply clone this repo in your home directory (ie in =~= or ~/home/username/~) then go to the ~/.dotfiles folder by running the command:
 #+begin_src bash
 cd ~/.dotfiles
 #+end_src
