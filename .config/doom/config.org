@@ -52,8 +52,8 @@
 ;; (setq doom-theme 'gruber-darker)
 ;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-sourcerer)
-;; (setq doom-theme 'doom-gruvbox)
-(setq doom-theme 'everforest-hard-dark)
+(setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'everforest-hard-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -168,5 +168,5 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
 
 * Custom Themes
 #+begin_src emacs-lisp
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/everforest-theme")
+(add-to-list 'custom-theme-load-path "~/.config/doom/themes/everforest")
 #+end_src

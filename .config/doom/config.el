@@ -35,8 +35,8 @@
 ;; (setq doom-theme 'gruber-darker)
 ;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-sourcerer)
-;; (setq doom-theme 'doom-gruvbox)
-(setq doom-theme 'everforest-hard-dark)
+(setq doom-theme 'doom-gruvbox)
+;; (setq doom-theme 'everforest-hard-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -132,4 +132,4 @@
       "M-l" #'drag-stuff-right
       "M-h" #'drag-stuff-left)
 
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/everforest-theme")
+(add-to-list 'custom-theme-load-path "~/.config/doom/themes/everforest")
