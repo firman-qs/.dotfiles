@@ -8,6 +8,10 @@
 #+NAME:   fig:ss-1
 [[./screenshot.png]]
 
+#+CAPTION: Second screenshot of the dwm window manager with emacs andzathura running in it.
+#+NAME:   fig:ss-2
+[[./screenshot2.png]]
+
 * TABLE OF CONTENTS :toc:
 - [[#what-is-this][WHAT IS THIS?]]
 - [[#window-manager][WINDOW MANAGER]]
@@ -21,7 +25,11 @@
 - [[#dependencies][DEPENDENCIES]]
 
 * WHAT IS THIS?
-This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as [[https://www.gnu.org/software/stow/][GNU Stow]] to make managing dotfiles on your device easier. If you are using [[https://www.gnu.org/software/stow/][GNU Stow]], simply clone this repo in your home directory (ie. in =~= or ~/home/username/~) then go to the ~/.dotfiles folder by running the command:
+This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as [[https://www.gnu.org/software/stow/][GNU Stow]] to make managing dotfiles on your device easier. If you are using [[https://www.gnu.org/software/stow/][GNU Stow]], simply clone this repo in your home directory (ie. in =~= or ~/home/username/~)
+#+begin_src bash
+git clone https://github.com/firman-qs/.dotfiles.git
+#+end_src
+then go to the ~/.dotfiles folder by running the command:
 #+begin_src bash
 cd ~/.dotfiles
 #+end_src
@@ -33,7 +41,7 @@ stow .
 * WINDOW MANAGER
 I use [[https://i3wm.org/][i3]] window manager and [[https://dwm.suckless.org/][dwm]] (mainly) on linux. My workflow in both window managers is quite similar, consisting of two important things. First thing, I usually use standard tile mode or more often just tab mode (with a tab patch in the dwm). Second thing, I use =alt+tab= to switch between the last two workspaces I visited. The rest is just standard as most people use window managers.
 ** [[https://github.com/firman-qs/dwm-fqs][DWM]]
-I applied quite a lot of patches (I think) in [[https://github.com/firman-qs/dwm-fqs][dwm on these dotfiles]]. Ironically, some of them I don't really use haha..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
+I applied quite a lot of patches (I think) in [[https://github.com/firman-qs/dwm-fqs][dwm on these dotfiles]]. Ironically, some of them I don't really use haha 😂 ..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
 *** List of dwm Patches
 + [[https://dwm.suckless.org/patches/pertag/][dwm-6.1-pertag_without_bar.diff]]
 + [[https://dwm.suckless.org/patches/actualfullscreen/][dwm-actualfullscreen-20211013-cb3f58a.diff]]
@@ -63,9 +71,9 @@ To install my dwm build, run this command inside the =~/.dotfiles/.config/suckle
 sudo make install
 #+end_src
 For keybindings and other configurations please read [[https://github.com/firman-qs/dwm-fqs/blob/a2c042b92be867dc8c50793601affdd9a917ced9/config.def.h][config.def.h]]. Because these dotfiles use keychord patches, please pay close attention to the writing format if you want to customize it.
-** i3
+** [[https://i3wm.org/][i3]]
 [[https://i3wm.org/][i3]] is a pretty straightforward window manager with rich features, my favorite after dwm (because I prefer dynamic tyling over manual). You can install i3 with your Linux distribution's package manager.
-/we also need to install i3-status/
+/We also need to install i3status./
 **** Debian/Ubuntu and his grandchildren
 #+begin_src bash
 sudo apt install i3 i3status
