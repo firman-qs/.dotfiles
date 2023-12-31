@@ -1,0 +1,6 @@
+[submodule ".config/doom/themes/everforest"]
+	path = .config/doom/themes/everforest
+	url = https://github.com/Theory-of-Everything/everforest-emacs.git
+[submodule ".config/suckless/dwm"]
+	path = .config/suckless/dwm
+	url = git@github.com:firman-qs/dwm-fqs.git
