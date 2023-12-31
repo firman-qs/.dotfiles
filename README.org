@@ -17,17 +17,41 @@
 - [[#dependencies][DEPENDENCIES]]
 
 * WHAT IS THIS?
-This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as [[https://www.gnu.org/software/stow/][GNU Stow]] to make managing dotfiles on your device easier. If you are using [[https://www.gnu.org/software/stow/][GNU Stow]], simply clone this repo in your home directory (ie in =~= or ~/home/username/~) then go to the ~/.dotfiles folder by running the command:
+This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as [[https://www.gnu.org/software/stow/][GNU Stow]] to make managing dotfiles on your device easier. If you are using [[https://www.gnu.org/software/stow/][GNU Stow]], simply clone this repo in your home directory (ie. in =~= or ~/home/username/~) then go to the ~/.dotfiles folder by running the command:
 #+begin_src bash
 cd ~/.dotfiles
 #+end_src
-and run stow inside the dotfiles folder by runnging:
+and run stow inside the dotfiles folder by runing:
 #+begin_src bash
 stow .
 #+end_src
 
 * WINDOW MANAGER
+I use [[https://i3wm.org/][i3]] window manager and [[https://dwm.suckless.org/][dwm]] (mainly) on linux. My workflow in both window managers is quite similar, consisting of two important things. First thing, I usually use standard tile mode or more often just tab mode (with a tab patch in the dwm). Second thing, I use =alt+tab= to switch between the last two workspaces I visited. The rest is just standard as most people use window managers.
 ** DWM
+I applied quite a lot of patches (I think) on dwm. Ironically, some of them I don't really use haha..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
++ [[https://dwm.suckless.org/patches/pertag/][dwm-6.1-pertag_without_bar.diff]]
++ [[https://dwm.suckless.org/patches/actualfullscreen/][dwm-actualfullscreen-20211013-cb3f58a.diff]]
++ [[https://dwm.suckless.org/patches/alwayscenter/][dwm-alwayscenter-20200625-f04cac6.diff]]
++ [[https://dwm.suckless.org/patches/attachbottom/][dwm-attachbottom-6.3.diff]]
++ [[https://dwm.suckless.org/patches/autostart/][dwm-autostart-20210120-cb3f58a.diff]]
++ [[https://github.com/bakkeby/patches/blob/master/dwm/dwm-placemouse-6.3.diff][dwm-bkb-placemouse-6.3.diff]]
++ [[https://dwm.suckless.org/patches/vanitygaps/][dwm-cfacts-vanitygaps-6.4_combo.diff]]
++ [[https://dwm.suckless.org/patches/cyclelayouts/][dwm-cyclelayouts-20180524-6.2.diff]]
++ [[https://dwm.suckless.org/patches/focusmaster/][dwm-focusmaster-20210804-138b405.diff]]
++ [[https://dwm.suckless.org/patches/hide_vacant_tags/][dwm-hide_vacant_tags-6.3.diff]]
++ [[https://dwm.suckless.org/patches/keychord/][dwm-keychord-6.2.diff]] (*note:* /new version released, updated soon/)
++ [[https://dwm.suckless.org/patches/restartsig/][dwm-restartsig-20180523-6.2.diff]]
++ [[https://dwm.suckless.org/patches/restoreafterrestart/][dwm-restoreafterrestart-20220709-d3f93c7.diff]]
++ [[https://dwm.suckless.org/patches/rotatestack/][dwm-rotatestack-20161021-ab9571b.diff]]
++ [[https://dwm.suckless.org/patches/save_floats/][dwm-savefloats-20181212-b69c870.diff]]
++ [[https://dwm.suckless.org/patches/scratchpads/][dwm-scratchpads-20200414-728d397b.diff]]
++ [[https://dwm.suckless.org/patches/smartborders/][dwm-smartborders-6.2.diff]]
++ [[https://dwm.suckless.org/patches/statuscmd/][dwm-statuscmd-20210405-67d76bd.diff]]
++ [[https://dwm.suckless.org/patches/tab/][dwm-tab-i3like-20211121-a786211.diff]]
++ [[https://dwm.suckless.org/patches/taglabels/][dwm-taglabels-hide_vacant_tags_funcionality-6.2.diff]]
++ [[https://dwm.suckless.org/patches/xrdb/][dwm-xrdb-6.4.diff]]
+This dwm configuration applies the [[https://dwm.suckless.org/patches/xrdb/][xrdb patch]] so you can set the color scheme using [[https://github.com/dylanaraps/pywal][pywal]] or from static .Xresources files as usual without needing to touch the source file, config.def.h (This also applies to dmenu and terminal st in this doftiles).
 ** i3
 * CODE EDITOR
 ** Emacs
