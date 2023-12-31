@@ -10,6 +10,7 @@
 - [[#for-latex][FOR LATEX]]
 - [[#send-deleted-file-to-the-trash-first][Send deleted file to the trash first]]
 - [[#modeline][Modeline]]
+- [[#org][ORG]]
 - [[#custom-keybindings][Custom Keybindings]]
 - [[#custom-themes][Custom Themes]]
 
@@ -59,15 +60,11 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
-(setq doom-font (font-spec :family "Iosevka" :size 18)
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18)
       doom-variable-pitch-font (font-spec :family "Open Sans" :size 18)
-      doom-symbol-font (font-spec :family "Iosevka" :size 18)
+      doom-symbol-font (font-spec :family "Iosevka Nerd Font" :size 18)
       doom-serif-font (font-spec :family "Latin Modern Roman" :size 18)
-      doom-big-font (font-spec :family "Iosevka" :size 24))
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
 
 (setq evil-insert-state-cursor '(box "yellow")
       evil-normal-state-cursor '(box "white"))
@@ -158,6 +155,24 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
 (setq doom-modeline-buffer-file-name-style 'relative-from-project)
 #+end_src
 
+* ORG
+#+begin_src emacs-lisp
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+
+(after! org
+  (setq org-default-notes-file (expand-file-name "notes.org" org-directory)
+        org-ellipsis " 󱞣 "
+        org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
+        ;; org-superstar-headline-bullets-list '("✽" "✾" "❆" "❆" "❁" "❅" "✼")
+        ;; org-superstar-headline-bullets-list '("◐" "◑" "◒" "◓" "⚈" "⚉" "⊗")
+        org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?✦)) ; changes +/- symbols in item lists
+        ;; org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?❍)) ; changes +/- symbols in item lists
+        org-log-done 'time
+        org-hide-emphasis-markers t))
+#+end_src
+
 * Custom Keybindings
 #+begin_src emacs-lisp
 (map! "M-j" #'drag-stuff-down
@@ -168,5 +183,5 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
 
 * Custom Themes
 #+begin_src emacs-lisp
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/everforest")
+(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/everforest")
 #+end_src

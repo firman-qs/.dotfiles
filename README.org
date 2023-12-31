@@ -1,0 +1,40 @@
+#+TITLE: fqs's dotfiles
+#+AUTHOR: firmanqs
+#+DESCRIPTION: fqs's personal config.
+#+STARTUP: showeverything
+#+OPTIONS: toc:3
+
+* TABLE OF CONTENTS :toc:
+- [[#what-is-this][WHAT IS THIS?]]
+- [[#window-manager][WINDOW MANAGER]]
+  - [[#dwm][DWM]]
+  - [[#i3][i3]]
+- [[#code-editor][CODE EDITOR]]
+  - [[#emacs][Emacs]]
+  - [[#vscode][VSCode]]
+- [[#launcher--script][LAUNCHER & SCRIPT]]
+- [[#color-scheme-and-fonts][COLOR SCHEME AND FONTS]]
+- [[#dependencies][DEPENDENCIES]]
+
+* WHAT IS THIS?
+This repo contains my personal configurations for several programs and linux rice (window manager, editor config, themes, fonts, etc.). You can use it by cloning and placing it in the appropriate directory. You can also use software such as GNU Stow to make managing dotfiles on your device easier. If you are using GNU Stow, simply clone this repo in your home directory (ie in ~~~ or ~/home/username/~) then go to the ~/.dotfiles folder by running the command:
+#+begin_src bash
+cd ~/.dotfiles
+#+end_src
+and run stow inside the dotfiles folder by runnging:
+#+begin_src bash
+stow .
+#+end_src
+
+* WINDOW MANAGER
+** DWM
+** i3
+* CODE EDITOR
+** Emacs
+** VSCode
+*** Extension
+* LAUNCHER & SCRIPT
++ Brightnessctl
+* COLOR SCHEME AND FONTS
+
+* DEPENDENCIES

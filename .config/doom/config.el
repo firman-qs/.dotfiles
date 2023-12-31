@@ -42,15 +42,11 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
-(setq doom-font (font-spec :family "Iosevka" :size 18)
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18)
       doom-variable-pitch-font (font-spec :family "Open Sans" :size 18)
-      doom-symbol-font (font-spec :family "Iosevka" :size 18)
+      doom-symbol-font (font-spec :family "Iosevka Nerd Font" :size 18)
       doom-serif-font (font-spec :family "Latin Modern Roman" :size 18)
-      doom-big-font (font-spec :family "Iosevka" :size 24))
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
 
 (setq evil-insert-state-cursor '(box "yellow")
       evil-normal-state-cursor '(box "white"))
@@ -127,9 +123,24 @@
 (setq doom-modeline-modal-icon nil)
 (setq doom-modeline-buffer-file-name-style 'relative-from-project)
 
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
+(setq org-directory "~/org/")
+
+(after! org
+  (setq org-default-notes-file (expand-file-name "notes.org" org-directory)
+        org-ellipsis " 󱞣 "
+        org-superstar-headline-bullets-list '("◉" "●" "○" "◆" "●" "○" "◆")
+        ;; org-superstar-headline-bullets-list '("✽" "✾" "❆" "❆" "❁" "❅" "✼")
+        ;; org-superstar-headline-bullets-list '("◐" "◑" "◒" "◓" "⚈" "⚉" "⊗")
+        org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?✦)) ; changes +/- symbols in item lists
+        ;; org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?❍)) ; changes +/- symbols in item lists
+        org-log-done 'time
+        org-hide-emphasis-markers t))
+
 (map! "M-j" #'drag-stuff-down
       "M-k" #'drag-stuff-up
       "M-l" #'drag-stuff-right
       "M-h" #'drag-stuff-left)
 
-(add-to-list 'custom-theme-load-path "~/.config/doom/themes/everforest")
+(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/everforest")
