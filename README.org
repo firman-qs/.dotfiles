@@ -4,6 +4,10 @@
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
 
+#+CAPTION: Screenshot of the dwm window manager with emacs andzathura running in it.
+#+NAME:   fig:ss-1
+[[./screenshot.png]]
+
 * TABLE OF CONTENTS :toc:
 - [[#what-is-this][WHAT IS THIS?]]
 - [[#window-manager][WINDOW MANAGER]]
