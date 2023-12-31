@@ -83,7 +83,7 @@ or if using [[https://github.com/Jguer/yay][yay]]
 yay -S i3 i3status
 #+end_src
 
-After that, make sure you have moved the [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3][i3]] and [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3status][i3status]] in dotfiles to the appropriate place or use [[https://www.gnu.org/software/stow/][GNU Stow]] as in [[*WHAT IS THIS?][WHAT IS THIS?]].
+After that, make sure you have moved the [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3][i3]] and [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3status][i3status]] in dotfiles to the appropriate place or use [[https://www.gnu.org/software/stow/][GNU Stow]] as in [[https://github.com/firman-qs/.dotfiles/?tab=readme-ov-file#what-is-this][WHAT IS THIS?]].
 
 * CODE EDITOR
 ** Emacs
