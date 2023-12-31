@@ -1,0 +1,30 @@
+colors:
+    # Default colors
+    primary:
+        # hard contrast: background = '#1d2021'
+        background: "{background}"
+        # soft contrast: background = '#32302f'
+        foreground: "{foreground}"
+
+    # Normal colors
+    normal:
+        black: "{color0}"
+        red: "{color1}"
+        green: "{color2}"
+        yellow: "{color3}"
+        blue: "{color4}"
+        magenta: "{color5}"
+        cyan: "{color6}"
+        white: "{color7}"
+
+    # Bright colors
+    bright:
+        black: "#928374"
+        red: "#fb4934"
+        green: "#b8bb26"
+        yellow: "#fabd2f"
+        blue: "#83a598"
+        magenta: "#d3869b"
+        cyan: "#8ec07c"
+        white: "#ebdbb2"
+theme: Gruvbox-Dark

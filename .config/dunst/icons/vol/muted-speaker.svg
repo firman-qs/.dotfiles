@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="800px"
+   height="800px"
+   viewBox="0 0 104 104"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="muted-speaker.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="0.6575"
+     inkscape:cx="400"
+     inkscape:cy="400"
+     inkscape:window-width="1350"
+     inkscape:window-height="732"
+     inkscape:window-x="8"
+     inkscape:window-y="28"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+  <title
+     id="title1">2-multimeda-no-sound</title>
+  <desc
+     id="desc1">Created with Sketch.</desc>
+  <defs
+     id="defs1" />
+  <g
+     id="3.Multimedia"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     transform="matrix(0.75954472,0,0,0.75169167,12.503675,13.212891)">
+    <g
+       id="Multimedia-(Color)"
+       transform="translate(-298,-100)"
+       stroke="#263238"
+       stroke-width="3.5">
+      <g
+         id="2-multimeda-no-sound"
+         transform="translate(300,102)">
+        <path
+           d="M 15,65 H 2.9994225 C 1.3428872,65 0,63.652681 0,61.999981 v -23.999962 0 C 0,36.343154 1.3443507,35 2.9994225,35 H 15"
+           id="Layer-1"
+           fill="#ffffff" />
+        <path
+           d="M 20.644757,69.712341 15,65.008779 V 34.735424 L 41.154736,12.941677 C 43.278417,11.172095 45,11.968196 45,14.728427 v 33.656339 15.313476 21.317534 c 0,2.756377 -1.71448,3.562251 -3.839165,1.791832 L 31.017896,78.355883"
+           id="Layer-2"
+           fill="#b4daf3" />
+        <path
+           d="m 73,87.136972 c 15.590417,-5.106195 26.85107,-19.773344 26.85107,-37.070559 0,-10.895047 -4.46755,-20.746642 -11.670651,-27.822786"
+           id="Layer-3" />
+        <path
+           d="M 67,73.463396 C 77.336181,70.78875 84.970085,61.399482 84.970085,50.227221 c 0,-6.789083 -2.818946,-12.919765 -7.350213,-17.285424"
+           id="Layer-4" />
+        <path
+           d="m 61,60 c 5.522847,0 10,-4.477153 10,-10 0,-2.861751 -1.202097,-5.442737 -3.128887,-7.265555"
+           id="Layer-5" />
+        <path
+           d="M 100,0 0.28791449,99.712082"
+           id="Layer-6" />
+      </g>
+    </g>
+  </g>
+</svg>
