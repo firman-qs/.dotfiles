@@ -4,13 +4,17 @@
 #+STARTUP: showeverything
 #+OPTIONS: toc:3
 
-#+CAPTION: Screenshot of the dwm window manager with emacs andzathura running in it.
+#+CAPTION: Screenshot of the dwm window manager with emacs and zathura running in it.
 #+NAME:   fig:ss-1
 [[./screenshot.png]]
 
-#+CAPTION: Second screenshot of the dwm window manager with emacs andzathura running in it.
+#+CAPTION: Second screenshot of the dwm window manager with emacs and zathura running in it.
 #+NAME:   fig:ss-2
 [[./screenshot2.png]]
+
+#+CAPTION: Third screenshot of the dwm window manager with emacs and st running in it.
+#+NAME:   fig:ss-3
+[[./screenshot3.png]]
 
 * TABLE OF CONTENTS :toc:
 - [[#what-is-this][WHAT IS THIS?]]
