@@ -35,7 +35,7 @@
 ;; (setq doom-theme 'gruber-darker)
 ;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-sourcerer)
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-nord)
 ;; (setq doom-theme 'everforest-hard-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -102,12 +102,14 @@
 ;;       :desc "Add a buffer current perspective" "p a" #'persp-add-buffer
 ;;       :desc "Remove perspective by name"       "p r" #'persp-remove-by-name)
 
+;; working with multiple file
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
 (setq LaTeX-indent-level 4)
 (setq tex-indent-basic 4)
 (setq TeX-brace-indent-level 4)
-(setq-default TeX-master nil)
 (setq LaTeX-item-indent -2)
 ;; for compiling with latexmk
 (add-hook 'LaTeX-mode-hook
