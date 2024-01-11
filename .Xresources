@@ -1,50 +1,269 @@
-! General
+! NORD THEME
 ! from https://github.com/nordtheme/xresources/blob/develop/src/nord
-#define nord00 #1E222A
-#define nord0 #2E3440
-#define nord1 #3B4252
-#define nord2 #434C5E
-#define nord3 #4C566A
-#define nord4 #D8DEE9
-#define nord5 #E5E9F0
-#define nord6 #ECEFF4
-#define nord7 #8FBCBB
-#define nord8 #88C0D0
-#define nord9 #81A1C1
-#define nord10 #5E81AC
-#define nord11 #BF616A
-#define nord12 #D08770
-#define nord13 #EBCB8B
-#define nord14 #A3BE8C
-#define nord15 #B48EAD
+! #define nord00 #1E222A
+! #define nord0 #2E3440
+! #define nord1 #3B4252
+! #define nord2 #434C5E
+! #define nord3 #4C566A
+! #define nord4 #D8DEE9
+! #define nord5 #E5E9F0
+! #define nord6 #ECEFF4
+! #define nord7 #8FBCBB
+! #define nord8 #88C0D0
+! #define nord9 #81A1C1
+! #define nord10 #5E81AC
+! #define nord11 #BF616A
+! #define nord12 #D08770
+! #define nord13 #EBCB8B
+! #define nord14 #A3BE8C
+! #define nord15 #B48EAD
 
-*.foreground:   nord4
-*.background:   nord00
-*.cursorColor:  nord4
-*fading: 35
-*fadeColor: nord3
+! *.foreground:   nord4
+! *.background:   nord00
+! *.cursorColor:  nord4
+! *fading: 35
+! *fadeColor: nord3
 
-*.color0: nord1
-*.color1: nord11
-*.color2: nord14
-*.color3: nord13
-*.color4: nord9
-*.color5: nord15
-*.color6: nord8
-*.color7: nord5
-*.color8: nord3
-*.color9: nord11
-*.color10: nord14
-*.color11: nord13
-*.color12: nord9
-*.color13: nord15
-*.color14: nord7
-*.color15: nord6
+! *.color0: nord1
+! *.color1: nord11
+! *.color2: nord14
+! *.color3: nord13
+! *.color4: nord9
+! *.color5: nord15
+! *.color6: nord8
+! *.color7: nord5
+! *.color8: nord3
+! *.color9: nord11
+! *.color10: nord14
+! *.color11: nord13
+! *.color12: nord9
+! *.color13: nord15
+! *.color14: nord7
+! *.color15: nord6
 
-! sucklessstuf
-*.normfgcolor: 	nord4
-*.normbgcolor:   	nord00
-*.selfgcolor:   	nord4
-*.selbgcolor:   	nord1
-*.normbordercolor:	nord00
-*.selbordercolor:	nord9
+! ! sucklessstuf
+! *.normfgcolor: 	nord4
+! *.normbgcolor:   	nord00
+! *.selfgcolor:   	nord4
+! *.selbgcolor:   	nord1
+! *.normbordercolor:	nord00
+! *.selbordercolor:	nord9
+
+
+!! SOLARIZED DARK THEME
+!! from https://github.com/nordtheme/xresources/blob/develop/src/nord
+! #define S_base03        #002b36
+! #define S_base02        #073642
+! #define S_base01        #586e75
+! #define S_base00        #657b83
+! #define S_base0         #839496
+! #define S_base1         #93a1a1
+! #define S_base2         #eee8d5
+! #define S_base3         #fdf6e3
+
+! *background:            S_base03
+! *foreground:            S_base0
+! *fadeColor:             S_base03
+! *cursorColor:           S_base1
+! *pointerColorBackground:S_base01
+! *pointerColorForeground:S_base1
+
+! #define S_yellow        #b58900
+! #define S_orange        #cb4b16
+! #define S_red           #dc322f
+! #define S_magenta       #d33682
+! #define S_violet        #6c71c4
+! #define S_blue          #268bd2
+! #define S_cyan          #2aa198
+! #define S_green         #859900
+
+! !! black dark/light
+! *color0:                S_base02
+! *color8:                S_base03
+
+! !! red dark/light
+! *color1:                S_red
+! *color9:                S_orange
+
+! !! green dark/light
+! *color2:                S_green
+! *color10:               S_base01
+
+! !! yellow dark/light
+! *color3:                S_yellow
+! *color11:               S_base00
+
+! !! blue dark/light
+! *color4:                S_blue
+! *color12:               S_base0
+
+! !! magenta dark/light
+! *color5:                S_magenta
+! *color13:               S_violet
+
+! !! cyan dark/light
+! *color6:                S_cyan
+! *color14:               S_base1
+
+! !! white dark/light
+! *color7:                S_base2
+! *color15:               S_base3
+
+! ! sucklessstuf
+! *.normfgcolor: 	S_base0
+! *.normbgcolor:   	#00212B
+! *.selfgcolor:   	S_base0
+! *.selbgcolor:   	S_base02
+! *.normbordercolor:	S_base03
+! *.selbordercolor:	S_blue
+
+
+! ! NIGHT OWL THEME
+! ! from https://github.com/alochaus/night-owl-xresources-theme
+! ! special
+! *.foreground:   #d6deeb
+! *.background:   #011627
+! *.cursorColor:  #d6deeb
+
+! ! black
+! *.color0:       #011627
+! *.color8:       #575656
+
+! ! red
+! *.color1:       #ef5350
+! *.color9:       #ef5350
+
+! ! green
+! *.color2:       #22da6e
+! *.color10:      #22da6e
+
+! ! yellow
+! *.color3:       #addb67
+! *.color11:      #ffeb95
+
+! ! blue
+! *.color4:       #82aaff
+! *.color12:      #82aaff
+
+! ! magenta
+! *.color5:       #c792ea
+! *.color13:      #c792ea
+
+! ! cyan
+! *.color6:       #21c7a8
+! *.color14:      #7fdbca
+
+! ! white
+! *.color7:       #ffffff
+! *.color15:      #ffffff
+
+! ! sucklessstuf
+! *.normfgcolor: 	#d6deeb
+! *.normbgcolor:   	#011627
+! *.selfgcolor:   	#d6deeb
+! *.selbgcolor:   	#02213B
+! *.normbordercolor:	#011627
+! *.selbordercolor:	#82aaff
+
+! ! ROSE PINE THEME
+! ! from https://github.com/rose-pine/xresources/blob/main/rose-pine
+! ! special
+! *.foreground:   #e0def4
+! *.background:   #191724
+! *.cursorColor:  #e0def4
+
+! ! black
+! *.color0:       #1f1d2e
+! *.color8:       #26233a
+
+! ! red
+! *.color1:       #eb6f92
+! *.color9:       #eb6f92
+
+! ! green
+! *.color2:       #f6c177
+! *.color10:      #f6c177
+
+! ! yellow
+! *.color3:       #ebbcba
+! *.color11:      #ebbcba
+
+! ! blue
+! *.color4:       #31748f
+! *.color12:      #31748f
+
+! ! magenta
+! *.color5:       #c4a7e7
+! *.color13:      #c4a7e7
+
+! ! cyan
+! *.color6:       #9ccfd8
+! *.color14:      #9ccfd8
+
+! ! white
+! *.color7:       #6e6a86
+! *.color15:      #908caa
+
+! ! sucklessstuf
+! *.normfgcolor: 	#ebbcba
+! *.normbgcolor:   	#191724
+! *.selfgcolor:   	#ebbcba
+! *.selbgcolor:   	#232136
+! *.normbordercolor:	#191724
+! *.selbordercolor:	#31748f
+
+
+! IR BLACk
+!
+! Generated with :
+! XRDB2Xreources.py
+!
+*.foreground:  #f1f1f1
+*.background:  #000000
+! *.cursorColor: #808080
+! !
+! ! Black
+! *.color0:      #4f4f4f
+! *.color8:      #7b7b7b
+! !
+! ! Red
+! *.color1:      #fa6c60
+! *.color9:      #fcb6b0
+! !
+! ! Green
+! *.color2:      #a8ff60
+! *.color10:     #cfffab
+! !
+! ! Yellow
+! *.color3:      #fffeb7
+! *.color11:     #ffffcc
+! !
+! ! Blue
+! *.color4:      #96cafe
+! *.color12:     #b5dcff
+! !
+! ! Magenta
+! *.color5:      #fa73fd
+! *.color13:     #fb9cfe
+! !
+! ! Cyan
+! *.color6:      #c6c5fe
+! *.color14:     #e0e0fe
+! !
+! ! White
+! *.color7:      #efedef
+! *.color15:     #ffffff
+! !
+! ! Bold, Italic, Underline
+! *.colorBD:     #ffffff
+
+! ! sucklessstuf
+! *.normfgcolor: 		#f1f1f1
+! *.normbgcolor:   	#0F0F0F
+! *.selfgcolor:   	#f1f1f1
+! *.selbgcolor:   	#292929
+! *.normbordercolor:	#0F0F0F
+! *.selbordercolor:	#626A6D
+
+#include ".cache/wal/xresrouces-for-mywm"
+#include ".cache/wal/colors.Xresources"
