@@ -1,0 +1,7 @@
+*.normfgcolor: 		#f1f1f1
+*.normbgcolor:   	{color0}
+*.selfgcolor:   	{color0}
+*.selbgcolor:   	{color8}
+*.normbordercolor:	{color0}
+*.selbordercolor:	{color8}
+*.accentcolor:	    {color6}
