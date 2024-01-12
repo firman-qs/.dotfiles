@@ -1,1 +1,0 @@
-void copyurl(const Arg *);
