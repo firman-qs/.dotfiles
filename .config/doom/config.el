@@ -32,12 +32,13 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'gruber-darker)
-(setq doom-theme 'doom-ir-black)
+;; (setq doom-theme 'doom-ir-black)
+;; (setq doom-theme 'doom-tomorrow-night)
 ;; (setq doom-theme 'doom-solarized-dark-high-contrast)
 ;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-sourcerer)
 ;; (setq doom-theme 'nord)
-;; (setq doom-theme 'everforest-hard-dark)
+(setq doom-theme 'everforest-hard-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -104,7 +105,9 @@
 ;;       :desc "Add a buffer current perspective" "p a" #'persp-add-buffer
 ;;       :desc "Remove perspective by name"       "p r" #'persp-remove-by-name)
 
-(setq projectile-project-search-path '("~/Starship/"))
+(setq projectile-project-search-path '("~/Starship/" "~/.dotfiles")
+      projectile-require-project-root t
+      projectile-enable-caching nil)
 
 ;; working with multiple file
 (setq TeX-auto-save t)
