@@ -4,3 +4,9 @@
 [submodule ".config/suckless/dwm"]
 	path = .config/suckless/dwm
 	url = git@github.com:firman-qs/dwm-fqs.git
+[submodule ".config/doom/themes/doom-rose-pine"]
+	path = .config/doom/themes/doom-rose-pine
+	url = https://github.com/donniebreve/rose-pine-doom-emacs.git
+[submodule ".config/suckless/st"]
+	path = .config/suckless/st
+	url = https://github.com/firman-qs/st-simple-terminal-fqs.git
