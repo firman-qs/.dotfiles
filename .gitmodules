@@ -9,4 +9,4 @@
 	url = https://github.com/donniebreve/rose-pine-doom-emacs.git
 [submodule ".config/suckless/st"]
 	path = .config/suckless/st
-	url = https://github.com/firman-qs/st-simple-terminal-fqs.git
+	url = git@github.com:firman-qs/st-simple-terminal-fqs.git
