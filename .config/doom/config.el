@@ -3,7 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 ;; (setq user-full-name "John Doe"
@@ -33,34 +32,34 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'gruber-darker)
+(setq doom-theme 'doom-ir-black)
+;; (setq doom-theme 'doom-solarized-dark-high-contrast)
 ;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-sourcerer)
-(setq doom-theme 'doom-nord)
+;; (setq doom-theme 'nord)
 ;; (setq doom-theme 'everforest-hard-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-symbol-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-serif-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
 
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18)
-      doom-variable-pitch-font (font-spec :family "Open Sans" :size 18)
-      doom-symbol-font (font-spec :family "Iosevka Nerd Font" :size 18)
-      doom-serif-font (font-spec :family "Latin Modern Roman" :size 18)
-      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
+(setq evil-insert-state-cursor '(box "yellow"))
 
-(setq evil-insert-state-cursor '(box "yellow")
-      evil-normal-state-cursor '(box "white"))
-
-(setq display-line-numbers-type 'relative) ;; relative line numbering for chad
+;; (setq display-line-numbers-type 'relative) ;; relative line numbering for chad
+(setq display-line-numbers-type 'visual) ;; relative line numbering for chad
 
 (global-auto-revert-mode t)  ;; Automatically show changes if the file has changed
-(setq scroll-margin 5)
+(setq scroll-margin 3)
 (global-visual-line-mode t)
 (column-number-mode 1) ;; show column where the cursor at right now in the statusline.
 
 (with-eval-after-load 'evil
-  (define-key evil-motion-state-map (kbd "g C-a") 'evil-numbers/inc-at-pt-incremental)
-  (define-key evil-motion-state-map (kbd "g C-x") 'evil-numbers/dec-at-pt-incremental))
+  (define-key evil-motion-state-map (kbd "g C-a") #'evil-numbers/inc-at-pt-incremental)
+  (define-key evil-motion-state-map (kbd "g C-x") #'evil-numbers/dec-at-pt-incremental))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -94,6 +93,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; (set-frame-parameter nil 'alpha-background 90)
+;; (add-to-list 'default-frame-alist '(alpha-background . 90))
+
 ;; (map! :lrader
 ;;       :desc "Switch to perspective NAME"       "p s" #'persp-switch
 ;;       :desc "Switch to buffer in perspective"  "p b" #'persp-switch-to-buffer
@@ -101,6 +103,8 @@
 ;;       :desc "Switch to previous perspective"   "p p" #'persp-prev
 ;;       :desc "Add a buffer current perspective" "p a" #'persp-add-buffer
 ;;       :desc "Remove perspective by name"       "p r" #'persp-remove-by-name)
+
+(setq projectile-project-search-path '("~/Starship/"))
 
 ;; working with multiple file
 (setq TeX-auto-save t)
@@ -115,19 +119,58 @@
 (add-hook 'LaTeX-mode-hook
           (lambda () (local-set-key (kbd "M-s") #'TeX-command-run-all)))
 
+(setq js-indent-level 4)
+
 (setq delete-by-moving-to-trash t
       trash-directory "~/.local/share/Trash/files/")
 
-(setq doom-modeline-height 23)
-(setq doom-modeline-bar-width -1)
-(setq doom-modeline-icon nil)
-(setq doom-modeline-modal nil)
-(setq doom-modeline-modal-icon nil)
-(setq doom-modeline-buffer-file-name-style 'relative-from-project)
+(setq doom-modeline-buffer-file-name-style 'file-name)
+(setq doom-modeline-icon t)
+
+;; Whether display the icon for `major-mode'. It respects option `doom-modeline-icon'.
+(setq doom-modeline-major-mode-icon t)
+
+;; Whether display the colorful icon for `major-mode'.
+;; It respects `nerd-icons-color-icons'.
+(setq doom-modeline-major-mode-color-icon t)
+
+;; Whether display the icon for the buffer state. It respects option `doom-modeline-icon'.
+(setq doom-modeline-buffer-state-icon t)
+
+;; Whether display the modification icon for the buffer.
+;; It respects option `doom-modeline-icon' and option `doom-modeline-buffer-state-icon'.
+(setq doom-modeline-buffer-modification-icon t)
+
+;; Whether display the lsp icon. It respects option `doom-modeline-icon'.
+(setq doom-modeline-lsp-icon t)
+
+;; Whether to use unicode as a fallback (instead of ASCII) when not using icons.
+;; (setq doom-modeline-unicode-fallback nil)
+
+;; Whether display the buffer encoding.
+(setq doom-modeline-buffer-encoding t)
+
+;; Whether display the indentation information.
+(setq doom-modeline-indent-info t)
+
+;; Whether display the `lsp' state. Non-nil to display in the mode-line.
+(setq doom-modeline-lsp t)
+
+;; (setq modus-themes-bold-constructs t
+;;       modus-themes-italic-constructs t
+;;       modus-themes-fringes 'subtle
+;;       modus-themes-org-blocks 'tinted-background
+;;       modus-themes-prompts '(bold intense)
+;;       modus-themes-paren-match '(bold intense)
+;;       modus-themes-headings '((1 . (rainbow 1.4))
+;;                               (2 . (rainbow 1.3))
+;;                               (3 . (rainbow 1.2))))
+
+;; (setq doom-theme 'modus-vivendi)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
+(setq org-directory "~/Starship/myNote")
 
 (after! org
   (setq org-default-notes-file (expand-file-name "notes.org" org-directory)
@@ -139,10 +182,16 @@
         ;; org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?❍)) ; changes +/- symbols in item lists
         org-log-done 'time
         org-hide-emphasis-markers t))
+(setq org-auto-tangle-default t)
 
 (map! "M-j" #'drag-stuff-down
       "M-k" #'drag-stuff-up
       "M-l" #'drag-stuff-right
       "M-h" #'drag-stuff-left)
 
+;; remaping unusefull evil bindings
+(map! :nvi "C-e" #'evil-end-of-visual-line)
+(map! :m "C-a" #'evil-next-line-1-first-non-blank)
+
 (add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/everforest")
+(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/doom-rose-pine")
