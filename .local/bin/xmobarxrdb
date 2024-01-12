@@ -1,0 +1,5 @@
+#!/bin/bash
+
+col=$(xrdb -query all | grep accentcolor | awk '{print $2}')
+echo $col
+

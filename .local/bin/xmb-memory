@@ -1,0 +1,15 @@
+#! /bin/bash
+case $BUTTON in
+	1) alacritty -e btop;;
+	2) notify-send "🧠 Memory hogs" "$(ps axch -o cmd:15,%mem --sort=-%mem | head)" ;;
+	4) setsid -f "$TERMINAL" -e htop ;;
+	3) notify-send "🧠 Memory module" "\- Shows Memory Used/Total.
+- Click to show memory hogs.
+- Middle click to open htop." ;;
+	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+# mem="$(free -h | awk '/^Mem:/ {print $3 "/" $2}')"
+mem="$(free -h | awk '/^Mem:/ {print $3}')"
+# echo -e "💻 $mem RAM"
+echo -e "$mem"
