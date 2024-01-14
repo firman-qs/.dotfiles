@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-readarray -t colors < /home/fqs/.cache/wal/colors
+readarray -t colors < /home/firmanqs/.cache/wal/colors
 
 ncolor="-h string:bgcolor:${colors[0]} -h string:fgcolor:${colors[7]} -h string:frcolor:${colors[7]}"
 
