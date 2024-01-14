@@ -27,4 +27,4 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\.config/doom
+#\.config/doom
