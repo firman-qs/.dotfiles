@@ -2,7 +2,7 @@
 
 readarray -t colors < /home/firmanqs/.cache/wal/colors
 
-ncolor="-h string:bgcolor:${colors[0]} -h string:fgcolor:${colors[7]} -h string:frcolor:${colors[7]}"
+ncolor="-h string:bgcolor:${colors[0]} -h string:fgcolor:${colors[7]} -h string:frcolor:${colors[8]}"
 
 # define functions
 

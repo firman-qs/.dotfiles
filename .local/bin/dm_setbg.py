@@ -18,7 +18,7 @@ path.append("/home/firmanqs/.config/dmscripts/")
 from config import dmenu, BACKGROUND_DIRERCTORY
 
 commands = {
-    "dmenu_sound" : ["ffplay", "-nodisp", "-autoexit", "/home/fqs/.config/sounds/menu-01.mp3"],
+    "dmenu_sound" : ["ffplay", "-nodisp", "-autoexit", "/home/firmanqs/.config/sounds/menu-01.mp3"],
     "setbg_menu": ["printf", "Set\nRandom\nExit"],
     "run_sxiv": ["sxiv", "-t", "o", BACKGROUND_DIRERCTORY],
     "pywal_setclr": ["wal", "-i"],

@@ -7,82 +7,31 @@
 * TABLE OF CONTENTS :toc:
 - [[#all-config-here-im-to-the-point-man][ALL CONFIG HERE I'M /TO THE POINT/ MAN]]
 - [[#appearance][APPEARANCE]]
+  - [[#fonts][Fonts]]
+  - [[#modeline][Modeline]]
+  - [[#theme][Theme]]
+  - [[#other][Other]]
+- [[#evil][EVIL]]
 - [[#perspective][PERSPECTIVE]]
 - [[#projectile][PROJECTILE]]
-- [[#for-latex][FOR LATEX]]
-- [[#for-javascript][FOR JAVASCRIPT]]
+- [[#development][DEVELOPMENT]]
+  - [[#for-php][for PHP]]
+  - [[#for-latex][for latex]]
+  - [[#for-lua][for Lua]]
+  - [[#for-javascript][for javascript]]
 - [[#send-deleted-file-to-the-trash-first][SEND DELETED FILE TO THE TRASH FIRST]]
-- [[#modeline][MODELINE]]
-- [[#modus-theme][MODUS THEME]]
 - [[#org][ORG]]
 - [[#custom-keybindings][Custom Keybindings]]
-- [[#custom-themes][Custom Themes]]
 
 * ALL CONFIG HERE I'M /TO THE POINT/ MAN
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
-
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
 ;; (setq user-full-name "John Doe"
 ;;       user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
-;; - `doom-font' -- the primary font to use
-;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
-;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;; - `doom-symbol-font' -- for symbols
-;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
-;;
-;; See 'C-h v doom-font' for documentation and more examples of what they
-;; accept. For example:
-;;
-;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
-;;
-;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
-;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
-;; refresh your font settings. If Emacs still can't find your font, it likely
-;; wasn't installed correctly. Font issues are rarely Doom issues!
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-;; (setq doom-theme 'gruber-darker)
-;; (setq doom-theme 'doom-ir-black)
-;; (setq doom-theme 'doom-tomorrow-night)
-;; (setq doom-theme 'doom-solarized-dark-high-contrast)
-;; (setq doom-theme 'doom-miramare)
-;; (setq doom-theme 'doom-sourcerer)
-;; (setq doom-theme 'nord)
-(setq doom-theme 'everforest-hard-dark)
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
-      doom-symbol-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
-      doom-serif-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
-
-(setq evil-insert-state-cursor '(box "yellow"))
-
-;; (setq display-line-numbers-type 'relative) ;; relative line numbering for chad
-(setq display-line-numbers-type 'visual) ;; relative line numbering for chad
-
-(global-auto-revert-mode t)  ;; Automatically show changes if the file has changed
-(setq scroll-margin 3)
-(global-visual-line-mode t)
-(column-number-mode 1) ;; show column where the cursor at right now in the statusline.
-
-(with-eval-after-load 'evil
-  (define-key evil-motion-state-map (kbd "g C-a") #'evil-numbers/inc-at-pt-incremental)
-  (define-key evil-motion-state-map (kbd "g C-x") #'evil-numbers/dec-at-pt-incremental))
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -106,21 +55,95 @@
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
 #+end_src
 
 * APPEARANCE
+** Fonts
 #+begin_src emacs-lisp
-;; (set-frame-parameter nil 'alpha-background 90)
-;; (add-to-list 'default-frame-alist '(alpha-background . 90))
+;; Doom exposes five (optional) variables for controlling fonts in Doom:
+;;
+;; - `doom-font' -- the primary font to use
+;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
+;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;;   presentations or streaming.
+;; - `doom-symbol-font' -- for symbols
+;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
+;;
+;; See 'C-h v doom-font' for documentation and more examples of what they
+;; accept. For example:
+;;
+;;(setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
+;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
+;;
+;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
+;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
+;; refresh your font settings. If Emacs still can't find your font, it likely
+;; wasn't installed correctly. Font issues are rarely Doom issues!
+
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-symbol-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-serif-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
+#+end_src
+
+** Modeline
+#+begin_src emacs-lisp
+(setq doom-modeline-buffer-file-name-style 'file-name
+      doom-modeline-icon nil
+      doom-modeline-lsp-icon t
+      doom-modeline-buffer-encoding t
+      doom-modeline-indent-info t
+      doom-modeline-lsp t
+      doom-modeline-modal nil)
+#+end_src
+
+** Theme
+#+begin_src emacs-lisp
+(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/everforest")
+(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/doom-rose-pine")
+
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. This is the default:
+;; (setq doom-theme 'gruber-darker)
+;; (setq doom-theme 'doom-ir-black)
+;; (setq doom-theme 'doom-tomorrow-night)
+;; (setq doom-theme 'doom-solarized-dark-high-contrast)
+;; (setq doom-theme 'doom-miramare)
+;; (setq doom-theme 'doom-sourcerer)
+;; (setq doom-theme 'nord)
+;; (setq doom-theme 'everforest-hard-dark)
+(setq doom-theme 'doom-material)
+;; (setq catppuccin-flavor 'mocha)
+#+end_src
+
+** Other
+*** Cursor
+#+begin_src emacs-lisp
+(setq evil-insert-state-cursor '(box "yellow"))
+#+end_src
+*** Line Number
+#+begin_src emacs-lisp
+;; (setq display-line-numbers-type 'relative) ;; relative line numbering for chad
+(setq display-line-numbers-type 'visual) ;; relative line numbering for chad
+#+end_src
+*** Etc
+#+begin_src emacs-lisp
+(global-auto-revert-mode t)  ;; Automatically show changes if the file has changed
+(setq scroll-margin 3)
+(global-visual-line-mode t)
+(column-number-mode 1) ;; show column where the cursor at right now in the statusline.
+(setq resize-mini-windows nil)
+#+end_src
+
+* EVIL
+#+begin_src emacs-lisp
+(with-eval-after-load 'evil
+  (define-key evil-motion-state-map (kbd "g C-a") #'evil-numbers/inc-at-pt-incremental)
+  (define-key evil-motion-state-map (kbd "g C-x") #'evil-numbers/dec-at-pt-incremental))
 #+end_src
 
 * PERSPECTIVE
@@ -137,12 +160,18 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
 
 * PROJECTILE
 #+begin_src emacs-lisp
-(setq projectile-project-search-path '("~/Starship/" "~/.dotfiles")
-      projectile-require-project-root t
-      projectile-enable-caching nil)
+(setq projectile-project-search-path '("~/Starship/"
+                                       "~/.dotfiles"))
 #+end_src
 
-* FOR LATEX
+* DEVELOPMENT
+** for PHP
+#+begin_src emacs-lisp
+(add-load-path! "~/.config/doom/extra-packages/php-extras")
+(eval-after-load 'php-mode
+  (require 'php-extras))
+#+end_src
+** for latex
 #+begin_src emacs-lisp
 ;; working with multiple file
 (setq TeX-auto-save t)
@@ -158,7 +187,12 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
           (lambda () (local-set-key (kbd "M-s") #'TeX-command-run-all)))
 #+end_src
 
-* FOR JAVASCRIPT
+** for Lua
+#+begin_src emacs-lisp
+(setq lua-indent-level 3)
+#+end_src
+
+** for javascript
 #+begin_src emacs-lisp
 (setq js-indent-level 4)
 #+end_src
@@ -169,61 +203,11 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
       trash-directory "~/.local/share/Trash/files/")
 #+end_src
 
-* MODELINE
-#+begin_src emacs-lisp
-(setq doom-modeline-buffer-file-name-style 'file-name)
-(setq doom-modeline-icon t)
-
-;; Whether display the icon for `major-mode'. It respects option `doom-modeline-icon'.
-(setq doom-modeline-major-mode-icon t)
-
-;; Whether display the colorful icon for `major-mode'.
-;; It respects `nerd-icons-color-icons'.
-(setq doom-modeline-major-mode-color-icon t)
-
-;; Whether display the icon for the buffer state. It respects option `doom-modeline-icon'.
-(setq doom-modeline-buffer-state-icon t)
-
-;; Whether display the modification icon for the buffer.
-;; It respects option `doom-modeline-icon' and option `doom-modeline-buffer-state-icon'.
-(setq doom-modeline-buffer-modification-icon t)
-
-;; Whether display the lsp icon. It respects option `doom-modeline-icon'.
-(setq doom-modeline-lsp-icon t)
-
-;; Whether to use unicode as a fallback (instead of ASCII) when not using icons.
-;; (setq doom-modeline-unicode-fallback nil)
-
-;; Whether display the buffer encoding.
-(setq doom-modeline-buffer-encoding t)
-
-;; Whether display the indentation information.
-(setq doom-modeline-indent-info t)
-
-;; Whether display the `lsp' state. Non-nil to display in the mode-line.
-(setq doom-modeline-lsp t)
-#+end_src
-
-* MODUS THEME
-#+begin_src emacs-lisp
-;; (setq modus-themes-bold-constructs t
-;;       modus-themes-italic-constructs t
-;;       modus-themes-fringes 'subtle
-;;       modus-themes-org-blocks 'tinted-background
-;;       modus-themes-prompts '(bold intense)
-;;       modus-themes-paren-match '(bold intense)
-;;       modus-themes-headings '((1 . (rainbow 1.4))
-;;                               (2 . (rainbow 1.3))
-;;                               (3 . (rainbow 1.2))))
-
-;; (setq doom-theme 'modus-vivendi)
-#+end_src
-
 * ORG
 #+begin_src emacs-lisp
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Starship/myNote")
+(setq org-directory "~/starship/myNote")
 
 (after! org
   (setq org-default-notes-file (expand-file-name "notes.org" org-directory)
@@ -236,6 +220,15 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
         org-log-done 'time
         org-hide-emphasis-markers t))
 (setq org-auto-tangle-default t)
+
+(use-package! org-transclusion
+              :after org
+              :init
+              (map!
+		:map global-map "<f12>" #'org-transclusion-add
+		:leader
+		:prefix "n"
+		:desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
 #+end_src
 
 * Custom Keybindings
@@ -248,10 +241,4 @@ Multiple named workspace in Emacs. Config source [[https://gitlab.com/dwt1/dotfi
 ;; remaping unusefull evil bindings
 (map! :nvi "C-e" #'evil-end-of-visual-line)
 (map! :m "C-a" #'evil-next-line-1-first-non-blank)
-#+end_src
-
-* Custom Themes
-#+begin_src emacs-lisp
-(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/everforest")
-(add-to-list 'custom-theme-load-path "~/.dotfiles/.config/doom/themes/doom-rose-pine")
 #+end_src

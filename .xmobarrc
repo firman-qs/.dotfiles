@@ -1,11 +1,9 @@
 Config { font            = "Iosevka Aile 10"
-       , additionalFonts = [ "JetBrainsMono Nerd Font 10"
-                           , "Font Awesome 4 Free Solid 10"
-                           , "Font Awesome 4 Brands 10"
-                           , "Font Awesome 5 Free Solid 10"
+       , additionalFonts = [ "Font Awesome 6 Brands 10"
+                           , "Font Awesome 6 Free 10"
+                           , "Font Awesome 5 Free 10"
                            , "Font Awesome 5 Brands 10"
-                           , "Font Awesome 6 Free Solid 10"
-                           , "Font Awesome 6 Brands 10"
+						   , "JetBrainsMono Nerd Font 10"
                            ]
        , borderColor = "#626A6D"
        , border = BottomB
@@ -24,8 +22,9 @@ Config { font            = "Iosevka Aile 10"
        , overrideRedirect = False    -- default: True
        , commands = [
                       Run Com "echo" ["<fn=2>\xf135</fn>"] "haskell" 3600
-                    , Run Com "echo" ["<fn=2>\xf017</fn> :"] "clockicon" 3600
+                    , Run Com "echo" ["<fn=2>\xf135</fn>"] "clockicon" 3600
                     , Run Com "xmb-nettraf" [] "internet" 5
+                    --, Run Com "sb-forecast" [] "forecast" 5
                     , Run Com "xmb-memory" [] "memory" 10
                     , Run Com "xmb-volume" [] "volume" 1
                     , Run Com "xmb-clock" [] "clock" 1
@@ -39,5 +38,5 @@ Config { font            = "Iosevka Aile 10"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<action=`dm_run.py` button=1> <icon=haskell_20_colored.xpm/></action><fc=#5b6268> |</fc> %UnsafeStdinReader% }{<action=`dm-wifi` button=1><fc=%accent%>d/u</fc>%internet%</action><fc=#5b6268> | </fc><action=`st -e htop` button=1><fc=%accent%>mem:</fc>%memory%</action><fc=#5b6268> | </fc><action=`pavucontrol` button=1><fc=%accent%>vol:</fc>%volume%</action><fc=#5b6268> | <fc=%accent%>%clockicon%</fc></fc>%clock%"
+       , template = "<action=`dm_run.py` button=1> <icon=haskell_20_colored.xpm/></action><fc=#5b6268> 󰇝</fc> %UnsafeStdinReader% }{<action=`dm-wifi` button=1><fc=%accent%>D/U:</fc>%internet%</action><fc=#5b6268> 󰇝 </fc><action=`st -e htop` button=1><fc=%accent%>Mem: </fc>%memory%</action><fc=#5b6268> 󰇝 </fc><action=`pavucontrol` button=1><fc=%accent%>Vol: </fc>%volume%</action><fc=#5b6268> 󰇝 <fc=%accent%></fc></fc>%clock%" --<fc=#5b6268>󰇝 </fc> <action=`dm-weather` button=1>%forecast% </action>"
        }

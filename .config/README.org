@@ -1,0 +1,2683 @@
+#+TITLE: General Config
+#+AUTHOR: firman-qs
+#+PROPERTY: header-args :tangle-mode (identity #o755)
+#+auto_tangle: t
+#+STARTUP: overview
+
+* TABLE OF CONTENTS :toc:
+- [[#window-managers][WINDOW MANAGERS]]
+  - [[#awesome][Awesome]]
+  - [[#bspwm][BSPWM]]
+  - [[#dwm][DWM]]
+  - [[#i3][i3]]
+  - [[#xmonad][xmonad]]
+- [[#terminals][TERMINALS]]
+  - [[#alacritty][Alacritty]]
+  - [[#st][ST]]
+- [[#polybar][POLYBAR]]
+- [[#picom][PICOM]]
+- [[#zathura][ZATHURA]]
+  - [[#zathura-theme][Zathura Theme]]
+- [[#sxiv][SXIV]]
+- [[#sxhkd][SXHKD]]
+- [[#suckless-tools][SUCKLESS TOOLS]]
+  - [[#tabbed][tabbed]]
+  - [[#slock][slock]]
+  - [[#dwmblocks][dwmblocks]]
+  - [[#dmenu][dmenu]]
+- [[#mpd][MPD]]
+- [[#ncmpcpp][NCMPCPP]]
+- [[#neofetch][NEOFETCH]]
+- [[#dunst][DUNST]]
+- [[#wal-pywal-template][WAL (PYWAL TEMPLATE)]]
+  - [[#alacritty-toml][Alacritty (TOML)]]
+  - [[#window-manager-xresources-theme][Window Manager Xresources Theme]]
+
+* WINDOW MANAGERS
+** Awesome
+To use my awesome wm configuration you need to clone the awesome-wm widget from [[https://github.com/streetturtle/awesome-wm-widgets][github.com/streetturtle/awesome-wm-widgets]]. For certain widgets, such as weather, you need a JSON parser for Lua from [[https://github.com/rxi/json.lua][github.com/rxi/json.lua]]. Read how to install these widgets into the Awesome-wm configuration on the page [[https://pavelmakhov.com/awesome-wm-widgets/][pavelmakhov.com/awesome-wm-widgets]].
+
+*💡Tips:* To maintain the confidentiality of the API key, you can create a separate file to store it. For example, in this configuration I saved it in the =weatherApi.lua= file in the =~/.config/awesome/= directory and added it to =.gitignore=
+#+begin_src lua :tangle no
+-- open weather data
+local weatherApi = {
+   key = "get your api key from openweather",
+   city = "get your city number",
+}
+return weatherApi
+#+end_src
+
+I made the Awesome-wm configuration into a separate page, you can see it on [[file:awesome/README.org][README.org]] in the =~/.config/awesome= directory.
+
+** BSPWM
+Other things you need to use this configuration, besides bspwm, are:
+- [[https://github.com/albertored11/bsptab][bsptab]],
+- [[https://github.com/polybar/polybar][polybar]],
+- and [[https://tools.suckless.org/tabbed/][tabbed]].
+#+transclude: [[./bspwm/bspwmrc][bspwmrc]]  :src bash
+** DWM
+I applied quite a lot of patches (I think) in [[https://github.com/firman-qs/dwm-fqs][dwm on these dotfiles]]. Ironically, some of them I don't really use haha 😂 ..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
+*** List of dwm Patches
++ [[https://dwm.suckless.org/patches/pertag/][dwm-6.1-pertag_without_bar.diff]]
++ [[https://dwm.suckless.org/patches/actualfullscreen/][dwm-actualfullscreen-20211013-cb3f58a.diff]]
++ [[https://dwm.suckless.org/patches/alwayscenter/][dwm-alwayscenter-20200625-f04cac6.diff]]
++ [[https://dwm.suckless.org/patches/attachbottom/][dwm-attachbottom-6.3.diff]]
++ [[https://dwm.suckless.org/patches/autostart/][dwm-autostart-20210120-cb3f58a.diff]]
++ [[https://github.com/bakkeby/patches/blob/master/dwm/dwm-placemouse-6.3.diff][dwm-bkb-placemouse-6.3.diff]]
++ [[https://dwm.suckless.org/patches/vanitygaps/][dwm-cfacts-vanitygaps-6.4_combo.diff]]
++ [[https://dwm.suckless.org/patches/cyclelayouts/][dwm-cyclelayouts-20180524-6.2.diff]]
++ [[https://dwm.suckless.org/patches/focusmaster/][dwm-focusmaster-20210804-138b405.diff]]
++ [[https://dwm.suckless.org/patches/hide_vacant_tags/][dwm-hide_vacant_tags-6.3.diff]]
++ [[https://dwm.suckless.org/patches/keychord/][dwm-keychord-6.2.diff]] (*note:* /new version released, updated soon/)
++ [[https://dwm.suckless.org/patches/restartsig/][dwm-restartsig-20180523-6.2.diff]]
++ [[https://dwm.suckless.org/patches/restoreafterrestart/][dwm-restoreafterrestart-20220709-d3f93c7.diff]]
++ [[https://dwm.suckless.org/patches/rotatestack/][dwm-rotatestack-20161021-ab9571b.diff]]
++ [[https://dwm.suckless.org/patches/save_floats/][dwm-savefloats-20181212-b69c870.diff]]
++ [[https://dwm.suckless.org/patches/scratchpads/][dwm-scratchpads-20200414-728d397b.diff]]
++ [[https://dwm.suckless.org/patches/smartborders/][dwm-smartborders-6.2.diff]]
++ [[https://dwm.suckless.org/patches/statuscmd/][dwm-statuscmd-20210405-67d76bd.diff]]
++ [[https://dwm.suckless.org/patches/tab/][dwm-tab-i3like-20211121-a786211.diff]]
++ [[https://dwm.suckless.org/patches/taglabels/][dwm-taglabels-hide_vacant_tags_funcionality-6.2.diff]]
++ [[https://dwm.suckless.org/patches/xrdb/][dwm-xrdb-6.4.diff]]
+This dwm configuration applies the [[https://dwm.suckless.org/patches/xrdb/][xrdb patch]] so you can set the color scheme using [[https://github.com/dylanaraps/pywal][pywal]] or from static .Xresources files as usual without needing to touch the source file, =config.def.h= (This also applies to dmenu and st in this doftiles). [[https://dwm.suckless.org/patches/statuscmd/][Statuscmd]] patch also applied, so supports *emoji* and *click* in statusbar to run some commands.
+*** How to Install?
+To install my dwm build, run this command inside the =~/.dotfiles/.config/suckless/dwm= directory:
+#+begin_src bash
+sudo make install
+#+end_src
+For keybindings and other configurations please read [[https://github.com/firman-qs/dwm-fqs/blob/a2c042b92be867dc8c50793601affdd9a917ced9/config.def.h][config.def.h]]. Because these dotfiles use keychord patches, please pay close attention to the writing format if you want to customize it.
+** i3
+[[https://i3wm.org/][i3]] is a pretty straightforward window manager with rich features. You can install i3 with your Linux distribution's package manager. /For this config, we also need to install i3status./
+**** Debian/Ubuntu and his grandchildren
+#+begin_src bash
+sudo apt install i3 i3status
+#+end_src
+**** Fedora and his friends
+#+begin_src bash
+sudo apt install i3 i3status
+#+end_src
+**** Arch and his children
+#+begin_src bash
+sudo pacman -S i3 i3status
+#+end_src
+or if using [[https://github.com/Jguer/yay][yay]]
+#+begin_src bash
+yay -S i3 i3status
+#+end_src
+
+After that, make sure you have moved the [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3][i3]] and [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3status][i3status]] in dotfiles to the appropriate place or use [[https://www.gnu.org/software/stow/][GNU Stow]] as in [[https://github.com/firman-qs/.dotfiles/?tab=readme-ov-file#what-is-this][WHAT IS THIS?]].
+
+*** i3 WM
+#+transclude: [[./i3/config][i3config]]  :src conf
+*** i3Status
+i3status configuration file. see "man i3status" for documentation. It is important that this file is edited as UTF-8. The following line should contain a sharp s: ß If the above line is not correctly displayed, fix your editor first!
+#+transclude: [[./i3status/config][i3status]]  :src conf
+** xmonad
+(TODO)
+*Look at:* [[https://github.com/firman-qs/.dotfiles/tree/main/.xmonad][github.com/firman-qs/.dotfiles/tree/main/.xmonad]]
+* TERMINALS
+** Alacritty
+My main terminal, configured in =.toml=.
+#+transclude: [[./alacritty/alacritty.toml][alacritty.toml]]  :src toml
+** ST
+Look at
+[[https://github.com/firman-qs/st-simple-terminal-fqs][github.com/firman-qs/st-simple-terminal-fqs]]
+* POLYBAR
+#+transclude: [[./polybar/config.ini][polybar config]] :src conf
+
+* PICOM
+#+begin_src conf :tangle ./picom/picom.conf
+##############################################################################
+#                                  ANIMATION                                 #
+#                               Fork: dccsillag                              #
+##############################################################################
+
+# animations = true;
+# animation-stiffness = 180.0;
+# animation-dampening = 28.0;
+# animation-clamping = false;
+# animation-mass = 1;
+# animation-for-open-window = "zoom";
+# animation-for-menu-window = "slide-up";
+# animation-for-transient-window = "slide-up";
+# animation-for-unmap-window = "slide-down";
+# animation-for-workspace-switch-in = "slide-left";
+# animation-for-workspace-switch-out = "slide-right";
+
+##############################################################################
+#                                 TRANSITION                                 #
+#                               Fork: Arian8j2                               #
+##############################################################################
+
+# # transition = true;
+# # transition-offset = 30;						# how many pixels away from the real position the animation should start
+# # transition-direction = "smart-x"; # smart-x, smart-y, top, bottom, left, right
+#
+# # Function that calculates new position of window (defaults to "ease-out-cubic")
+# # see https://easings.net for list of all functions
+# # naming conventions are different to that site tho, e.g "easeInSine" is listed
+# # on site but here that translated to "ease-in-sine"
+# transition-timing-function = "ease-out-elastic";
+
+# Time between frames in transition. (0.01 - 1.0, defaults to 0.028)
+# transition-step = 0.04;
+
+# Similar to opacity rules but determites transition direction e.g:
+# "right: name *= 'Firefox'" will make firefox transition direction to right
+# Specify a list of transition rules, in the format `DIRECTION:PATTERN`
+# transition-rule = [];
+
+#################################
+#          Animations           #
+#################################
+# requires https://github.com/jonaburg/picom
+# (These are also the default values)
+transition-length = 150
+transition-pow-x = 0.02
+transition-pow-y = 0.02
+transition-pow-w = 0.02
+transition-pow-h = 0.02
+size-transition = true
+
+#################################
+#             Corners           #
+#################################
+# requires: https://github.com/sdhand/compton or https://github.com/jonaburg/picom
+# corner-radius = 10.0;
+# rounded-corners-exclude = [
+#   #"window_type = 'normal'",
+#   "class_g = 'awesome'",
+#   "class_g = 'URxvt'",
+#   "class_g = 'XTerm'",
+#   "class_g = 'kitty'",
+#   "class_g = 'Alacritty'",
+#   "class_g = 'Polybar'",
+#   "class_g = 'code-oss'",
+#   #"class_g = 'TelegramDesktop'",
+#   "class_g = 'firefox'",
+#   "class_g = 'Thunderbird'"
+# ];
+# round-borders = 1;
+# round-borders-exclude = [
+#   #"class_g = 'TelegramDesktop'",
+# ];
+
+#################################
+#             Shadows           #
+#################################
+# Enabled client-side shadows on windows. Note desktop windows
+# (windows with '_NET_WM_WINDOW_TYPE_DESKTOP') never get shadow,
+# unless explicitly requested using the wintypes option.
+#
+# shadow = false
+shadow = true;
+
+# The blur radius for shadows, in pixels. (defaults to 12)
+# shadow-radius = 12
+shadow-radius = 7;
+
+# The opacity of shadows. (0.0 - 1.0, defaults to 0.75)
+shadow-opacity = .75
+
+# The left offset for shadows, in pixels. (defaults to -15)
+# shadow-offset-x = -15
+shadow-offset-x = -7;
+
+# The top offset for shadows, in pixels. (defaults to -15)
+# shadow-offset-y = -15
+shadow-offset-y = -7;
+
+# Avoid drawing shadows on dock/panel windows. This option is deprecated,
+# you should use the *wintypes* option in your config file instead.
+#
+# no-dock-shadow = false
+
+# Don't draw shadows on drag-and-drop windows. This option is deprecated,
+# you should use the *wintypes* option in your config file instead.
+#
+# no-dnd-shadow = false
+
+# Red color value of shadow (0.0 - 1.0, defaults to 0).
+# shadow-red = 0
+
+# Green color value of shadow (0.0 - 1.0, defaults to 0).
+# shadow-green = 0
+
+# Blue color value of shadow (0.0 - 1.0, defaults to 0).
+# shadow-blue = 0
+
+# Do not paint shadows on shaped windows. Note shaped windows
+# here means windows setting its shape through X Shape extension.
+# Those using ARGB background is beyond our control.
+# Deprecated, use
+#   shadow-exclude = 'bounding_shaped'
+# or
+#   shadow-exclude = 'bounding_shaped && !rounded_corners'
+# instead.
+#
+# shadow-ignore-shaped = ''
+
+# Specify a list of conditions of windows that should have no shadow.
+#
+# examples:
+#   shadow-exclude = "n:e:Notification";
+#
+# shadow-exclude = []
+shadow-exclude = [
+  "name = 'Notification'",
+  "class_g = 'Conky'",
+  "class_g ?= 'Notify-osd'",
+  "class_g = 'Cairo-clock'",
+  "class_g = 'slop'",
+  "class_g = 'Polybar'",
+  "_GTK_FRAME_EXTENTS@:c"
+];
+
+# Specify a X geometry that describes the region in which shadow should not
+# be painted in, such as a dock window region. Use
+#    shadow-exclude-reg = "x10+0+0"
+# for example, if the 10 pixels on the bottom of the screen should not have shadows painted on.
+#
+# shadow-exclude-reg = ""
+
+# Crop shadow of a window fully on a particular Xinerama screen to the screen.
+# xinerama-shadow-crop = false
+
+
+#################################
+#           Fading              #
+#################################
+
+
+# Fade windows in/out when opening/closing and when opacity changes,
+#  unless no-fading-openclose is used.
+# fading = false
+fading = false;
+
+# Opacity change between steps while fading in. (0.01 - 1.0, defaults to 0.028)
+# fade-in-step = 0.028
+fade-in-step = 0.023;
+
+# Opacity change between steps while fading out. (0.01 - 1.0, defaults to 0.03)
+# fade-out-step = 0.03
+fade-out-step = 0.023;
+
+# The time between steps in fade step, in milliseconds. (> 0, defaults to 10)
+# fade-delta = 10
+
+# Specify a list of conditions of windows that should not be faded.
+# don't need this, we disable fading for all normal windows with wintypes: {}
+fade-exclude = [
+  "class_g = 'slop'"   # maim
+]
+
+# Do not fade on window open/close.
+# no-fading-openclose = false
+
+# Do not fade destroyed ARGB windows with WM frame. Workaround of bugs in Openbox, Fluxbox, etc.
+# no-fading-destroyed-argb = false
+
+
+#################################
+#   Transparency / Opacity      #
+#################################
+
+
+# Opacity of inactive windows. (0.1 - 1.0, defaults to 1.0)
+# inactive-opacity = 1
+# inactive-opacity = 0.8;
+
+# Opacity of window titlebars and borders. (0.1 - 1.0, disabled by default)
+# frame-opacity = 1.0
+# frame-opacity = 0.7;
+
+# Default opacity for dropdown menus and popup menus. (0.0 - 1.0, defaults to 1.0)
+# menu-opacity = 1.0
+# menu-opacity is depreciated use dropdown-menu and popup-menu instead.
+
+#If using these 2 below change their values in line 510 & 511 aswell
+popup_menu = { opacity = 0.9; }
+dropdown_menu = { opacity = 0.9; }
+
+
+# Let inactive opacity set by -i override the '_NET_WM_OPACITY' values of windows.
+# inactive-opacity-override = true
+inactive-opacity-override = false;
+
+# Default opacity for active windows. (0.0 - 1.0, defaults to 1.0)
+# active-opacity = 1.0;
+
+# Dim inactive windows. (0.0 - 1.0, defaults to 0.0)
+# inactive-dim = 0.0
+
+# Specify a list of conditions of windows that should always be considered focused.
+# focus-exclude = []
+focus-exclude = [
+  "class_g = 'Cairo-clock'",
+  "class_g = 'Bar'",                    # lemonbar
+  "class_g = 'slop'"                    # maim
+];
+
+# Use fixed inactive dim value, instead of adjusting according to window opacity.
+# inactive-dim-fixed = 1.0
+
+# Specify a list of opacity rules, in the format `PERCENT:PATTERN`,
+# like `50:name *= "Firefox"`. picom-trans is recommended over this.
+# Note we don't make any guarantee about possible conflicts with other
+# programs that set '_NET_WM_WINDOW_OPACITY' on frame or client windows.
+# example:
+#    opacity-rule = [ "80:class_g = 'URxvt'" ];
+#
+# opacity-rule = []
+opacity-rule = [
+  "100:class_g    = 'slop'",            # maim
+  "100:class_g    = 'XTerm'",
+  "100:class_g    = 'URxvt'",
+  "100:class_g    = 'kitty'",
+  "100:class_g    = 'Alacritty'",
+  "100:class_g     = 'Polybar'",
+  "100:class_g    = 'firefox'",
+  "100:class_g    = 'Thunderbird'"
+];
+
+
+#################################
+#     Background-Blurring       #
+#################################
+
+
+# Parameters for background blurring, see the *BLUR* section for more information.
+# blur-method =
+# blur-size = 12
+#
+# blur-deviation = false
+
+# Blur background of semi-transparent / ARGB windows.
+# Bad in performance, with driver-dependent behavior.
+# The name of the switch may change without prior notifications.
+#
+# blur-background = true;
+
+# Blur background of windows when the window frame is not opaque.
+# Implies:
+#    blur-background
+# Bad in performance, with driver-dependent behavior. The name may change.
+#
+# blur-background-frame = false;
+
+
+# Use fixed blur strength rather than adjusting according to window opacity.
+# blur-background-fixed = false;
+
+
+# Specify the blur convolution kernel, with the following format:
+# example:
+#   blur-kern = "5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
+#
+# blur-kern = ''
+# blur-kern = "3x3box";
+
+blur: {
+  # requires: https://github.com/ibhagwan/picom
+  method = "kawase";
+  #method = "kernel";
+  strength = 3;
+  # deviation = 1.0;
+  # kernel = "11x11gaussian";
+  background = false;
+  background-frame = false;
+  background-fixed = false;
+  kern = "3x3box";
+}
+
+# Exclude conditions for background blur.
+blur-background-exclude = [
+  #"window_type = 'dock'",
+  #"window_type = 'desktop'",
+  #"class_g = 'URxvt'",
+  #
+  # prevents picom from blurring the background
+  # when taking selection screenshot with `main`
+  # https://github.com/naelstrof/maim/issues/130
+  "class_g = 'slop'",
+  "_GTK_FRAME_EXTENTS@:c"
+];
+
+
+#################################
+#       General Settings        #
+#################################
+
+# Daemonize process. Fork to background after initialization. Causes issues with certain (badly-written) drivers.
+# daemon = false
+
+# Specify the backend to use: `xrender`, `glx`, or `xr_glx_hybrid`.
+# `xrender` is the default one.
+#
+experimental-backends = true;
+backend = "glx";
+#backend = "xrender";
+
+
+# Enable/disable VSync.
+# vsync = false
+vsync = true
+
+# Enable remote control via D-Bus. See the *D-BUS API* section below for more details.
+# dbus = false
+
+# Try to detect WM windows (a non-override-redirect window with no
+# child that has 'WM_STATE') and mark them as active.
+#
+# mark-wmwin-focused = false
+mark-wmwin-focused = true;
+
+# Mark override-redirect windows that doesn't have a child window with 'WM_STATE' focused.
+# mark-ovredir-focused = false
+mark-ovredir-focused = true;
+
+# Try to detect windows with rounded corners and don't consider them
+# shaped windows. The accuracy is not very high, unfortunately.
+#
+# detect-rounded-corners = false
+detect-rounded-corners = true;
+
+# Detect '_NET_WM_OPACITY' on client windows, useful for window managers
+# not passing '_NET_WM_OPACITY' of client windows to frame windows.
+#
+# detect-client-opacity = false
+detect-client-opacity = true;
+
+# Specify refresh rate of the screen. If not specified or 0, picom will
+# try detecting this with X RandR extension.
+#
+# refresh-rate = 60
+refresh-rate = 0
+
+# Limit picom to repaint at most once every 1 / 'refresh_rate' second to
+# boost performance. This should not be used with
+#   vsync drm/opengl/opengl-oml
+# as they essentially does sw-opti's job already,
+# unless you wish to specify a lower refresh rate than the actual value.
+#
+# sw-opti =
+
+# Use EWMH '_NET_ACTIVE_WINDOW' to determine currently focused window,
+# rather than listening to 'FocusIn'/'FocusOut' event. Might have more accuracy,
+# provided that the WM supports it.
+#
+# use-ewmh-active-win = false
+
+# Unredirect all windows if a full-screen opaque window is detected,
+# to maximize performance for full-screen windows. Known to cause flickering
+# when redirecting/unredirecting windows. paint-on-overlay may make the flickering less obvious.
+#
+# unredir-if-possible = false
+
+# Delay before unredirecting the window, in milliseconds. Defaults to 0.
+# unredir-if-possible-delay = 0
+
+# Conditions of windows that shouldn't be considered full-screen for unredirecting screen.
+# unredir-if-possible-exclude = []
+
+# Use 'WM_TRANSIENT_FOR' to group windows, and consider windows
+# in the same group focused at the same time.
+#
+# detect-transient = false
+detect-transient = true
+
+# Use 'WM_CLIENT_LEADER' to group windows, and consider windows in the same
+# group focused at the same time. 'WM_TRANSIENT_FOR' has higher priority if
+# detect-transient is enabled, too.
+#
+# detect-client-leader = false
+detect-client-leader = true
+
+# Resize damaged region by a specific number of pixels.
+# A positive value enlarges it while a negative one shrinks it.
+# If the value is positive, those additional pixels will not be actually painted
+# to screen, only used in blur calculation, and such. (Due to technical limitations,
+# with use-damage, those pixels will still be incorrectly painted to screen.)
+# Primarily used to fix the line corruption issues of blur,
+# in which case you should use the blur radius value here
+# (e.g. with a 3x3 kernel, you should use `--resize-damage 1`,
+# with a 5x5 one you use `--resize-damage 2`, and so on).
+# May or may not work with *--glx-no-stencil*. Shrinking doesn't function correctly.
+#
+# resize-damage = 1
+
+# Specify a list of conditions of windows that should be painted with inverted color.
+# Resource-hogging, and is not well tested.
+#
+# invert-color-include = []
+
+# GLX backend: Avoid using stencil buffer, useful if you don't have a stencil buffer.
+# Might cause incorrect opacity when rendering transparent content (but never
+# practically happened) and may not work with blur-background.
+# My tests show a 15% performance boost. Recommended.
+#
+# glx-no-stencil = false
+
+# GLX backend: Avoid rebinding pixmap on window damage.
+# Probably could improve performance on rapid window content changes,
+# but is known to break things on some drivers (LLVMpipe, xf86-video-intel, etc.).
+# Recommended if it works.
+#
+# glx-no-rebind-pixmap = false
+
+# Disable the use of damage information.
+# This cause the whole screen to be redrawn everytime, instead of the part of the screen
+# has actually changed. Potentially degrades the performance, but might fix some artifacts.
+# The opposing option is use-damage
+#
+# no-use-damage = false
+#use-damage = true (Causing Weird Black semi opaque rectangles when terminal is opened)
+#Changing use-damage to false fixes the problem
+use-damage = false
+
+# Use X Sync fence to sync clients' draw calls, to make sure all draw
+# calls are finished before picom starts drawing. Needed on nvidia-drivers
+# with GLX backend for some users.
+#
+# xrender-sync-fence = false
+
+# GLX backend: Use specified GLSL fragment shader for rendering window contents.
+# See `compton-default-fshader-win.glsl` and `compton-fake-transparency-fshader-win.glsl`
+# in the source tree for examples.
+#
+# glx-fshader-win = ''
+
+# Force all windows to be painted with blending. Useful if you
+# have a glx-fshader-win that could turn opaque pixels transparent.
+#
+# force-win-blend = false
+
+# Do not use EWMH to detect fullscreen windows.
+# Reverts to checking if a window is fullscreen based only on its size and coordinates.
+#
+# no-ewmh-fullscreen = false
+
+# Dimming bright windows so their brightness doesn't exceed this set value.
+# Brightness of a window is estimated by averaging all pixels in the window,
+# so this could comes with a performance hit.
+# Setting this to 1.0 disables this behaviour. Requires --use-damage to be disabled. (default: 1.0)
+#
+# max-brightness = 1.0
+
+# Make transparent windows clip other windows like non-transparent windows do,
+# instead of blending on top of them.
+#
+# transparent-clipping = false
+
+# Set the log level. Possible values are:
+#  "trace", "debug", "info", "warn", "error"
+# in increasing level of importance. Case doesn't matter.
+# If using the "TRACE" log level, it's better to log into a file
+# using *--log-file*, since it can generate a huge stream of logs.
+#
+# log-level = "debug"
+log-level = "info";
+
+# Set the log file.
+# If *--log-file* is never specified, logs will be written to stderr.
+# Otherwise, logs will to written to the given file, though some of the early
+# logs might still be written to the stderr.
+# When setting this option from the config file, it is recommended to use an absolute path.
+#
+# log-file = '/path/to/your/log/file'
+
+# Show all X errors (for debugging)
+# show-all-xerrors = false
+
+# Write process ID to a file.
+# write-pid-path = '/path/to/your/log/file'
+
+# Window type settings
+#
+# 'WINDOW_TYPE' is one of the 15 window types defined in EWMH standard:
+#     "unknown", "desktop", "dock", "toolbar", "menu", "utility",
+#     "splash", "dialog", "normal", "dropdown_menu", "popup_menu",
+#     "tooltip", "notification", "combo", and "dnd".
+#
+# Following per window-type options are available: ::
+#
+#   fade, shadow:::
+#     Controls window-type-specific shadow and fade settings.
+#
+#   opacity:::
+#     Controls default opacity of the window type.
+#
+#   focus:::
+#     Controls whether the window of this type is to be always considered focused.
+#     (By default, all window types except "normal" and "dialog" has this on.)
+#
+#   full-shadow:::
+#     Controls whether shadow is drawn under the parts of the window that you
+#     normally won't be able to see. Useful when the window has parts of it
+#     transparent, and you want shadows in those areas.
+#
+#   redir-ignore:::
+#     Controls whether this type of windows should cause screen to become
+#     redirected again after been unredirected. If you have unredir-if-possible
+#     set, and doesn't want certain window to cause unnecessary screen redirection,
+#     you can set this to `true`.
+#
+wintypes:
+{
+  normal = { fade = false; shadow = false; }
+  tooltip = { fade = true; shadow = false; opacity = 1.0; focus = true; full-shadow = false; };
+  dock = { shadow = false; }
+  dnd = { shadow = false; }
+  popup_menu = { opacity = 0.9; }
+  dropdown_menu = { opacity = 0.9; }
+};
+#+end_src
+* ZATHURA
+#+begin_src conf :tangle ./zathura/zathurarc
+# GENERAL SETTINGS
+# ----------------
+set window-title-basename   true
+set statusbar-home-tilde    true
+set recolor                 true
+set recolor-keephue         true
+set selection-clipboard     clipboard
+
+# LAYOUT SETTINGS
+# ---------------
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set show-scrollbars     false
+#+end_src
+** Zathura Theme
+*** Nord
+#+begin_src conf :tangle no
+# config source https://github.com/nordtheme/nord/issues/143
+# # NORD THEME
+# # ----------
+# set default-bg              "#2e3440" # nord0
+# set default-fg              "#d8dee9" # nord4
+# set statusbar-bg            "#2e3440" # nord0
+# set statusbar-fg            "#d8dee9" # nord4
+# set inputbar-bg             "#2e3440" # nord0
+# set inputbar-fg             "#a3be8c" # nord14
+# set completion-bg           "#2e3440" # nord0
+# set completion-fg           "#d8dee9" # nord4
+# set completion-group-bg     "#2e3440" # nord0
+# set completion-group-fg     "#d8dee9" # nord4
+# set completion-highlight-bg "#434c5e" # nord2
+# set completion-highlight-fg "#d8dee9" # nord4
+# set notification-bg         "#3b4252" # nord2
+# set notification-fg         "#eceff4" # nord6
+# set notification-error-bg   "#bf616a" # nord11
+# set notification-error-fg   "#eceff4" # nord6
+# set notification-warning-bg "#ebcb8b" # nord13
+# set notification-warning-fg "#2e3440" # nord0
+# set highlight-color         "#5e81ac" # nord10
+# set highlight-active-color  "#88c0d0" # nord8
+# set index-bg                "#2e3440" # nord0
+# set index-fg                "#d8dee9" # nord4
+# set index-active-bg         "#434c5e" # nord2
+# set index-active-fg         "#d8dee9" # nord4
+# set recolor-darkcolor       "#d8dee9" # nord4
+# set recolor-lightcolor      "#2e3440" # nord0
+# set render-loading-bg       "#2e3440" # nord0
+# set render-loading-fg       "#d8dee9" # nord4
+#+end_src
+*** Rose Pine
+#+begin_src conf :tangle no
+# ROSE PINE
+# https://github.com/rose-pine/rose-pine-theme
+# Soho vibes for Zathura: Rosé Pine Moon
+#
+# Usage:
+# Copy contents of this file to ~/.config/zathura/zathurarc
+#
+# Change 'recolor' and 'recolor-keephue' to true to change
+# the document colors for a more uniform viewing experience.
+
+# set default-bg                  "#232136"
+# set default-fg                  "#e0def4"
+# set statusbar-fg                "#e0def4"
+# set statusbar-bg                "#59546d"
+# set inputbar-bg                 "#817c9c"
+# set inputbar-fg                 "#232136"
+# set notification-bg             "#817c9c"
+# set notification-fg             "#232136"
+# set notification-error-bg       "#817c9c"
+# set notification-error-fg       "#ea9a97"
+# set notification-warning-bg     "#817c9c"
+# set notification-warning-fg     "#f6c177"
+# set highlight-color             "#3e8fb0"
+# set highlight-active-color      "#9ccfd8"
+# set completion-bg               "#817c9c"
+# set completion-fg               "#9ccfd8"
+# set completion-highlight-fg     "#e0def4"
+# set completion-highlight-bg     "#9ccfd8"
+# set recolor-lightcolor          "#232136"
+# set recolor-darkcolor           "#e0def4"
+#+end_src
+*** Gruvbox + ir black background
+#+begin_src conf :tangle ./zathura/zathurarc
+# GRUVBOX FOREGROUND WITH IR BLACK BACKGROUND
+# ------------------------------------------
+set default-bg              "#000000" # IR Black Background
+set default-fg              "#ebdbb2" # Gruvbox Foreground
+set statusbar-bg            "#000000" # IR Black Background
+set statusbar-fg            "#ebdbb2" # Gruvbox Foreground
+set inputbar-bg             "#000000" # IR Black Background
+set inputbar-fg             "#ebdbb2" # Gruvbox Foreground
+set completion-bg           "#000000" # IR Black Background
+set completion-fg           "#ebdbb2" # Gruvbox Foreground
+set completion-group-bg     "#000000" # IR Black Background
+set completion-group-fg     "#ebdbb2" # Gruvbox Foreground
+set completion-highlight-bg "#444444" # Gruvbox Highlight Background
+set completion-highlight-fg "#ebdbb2" # Gruvbox Foreground
+set notification-bg         "#2d2d2d" # IR Black Notification Background
+set notification-fg         "#ebdbb2" # Gruvbox Foreground
+set notification-error-bg   "#cc241d" # Gruvbox Error Background (Brownie Accent)
+set notification-error-fg   "#fb4934" # Gruvbox Error Foreground (Brownie Accent)
+set notification-warning-bg "#d79921" # Gruvbox Warning Background (Brownie Accent)
+set notification-warning-fg "#fabd2f" # Gruvbox Warning Foreground (Brownie Accent)
+set highlight-color         "#83a598" # Gruvbox Highlight Color (Brownie Accent)
+set highlight-active-color  "#bdae93" # Gruvbox Active Highlight Color (Brownie Accent)
+set index-bg                "#000000" # IR Black Background
+set index-fg                "#ebdbb2" # Gruvbox Foreground
+set index-active-bg         "#444444" # Gruvbox Active Background
+set index-active-fg         "#ebdbb2" # Gruvbox Foreground
+set recolor-darkcolor       "#ebdbb2" # Gruvbox Foreground
+set recolor-lightcolor      "#000000" # IR Black Background
+set render-loading-bg       "#000000" # IR Black Background
+set render-loading-fg       "#ebdbb2" # Gruvbox Foreground
+#+end_src
+*** Solarized Osaka
+based on [[https://github.com/craftzdog/solarized-osaka.nvim][craftzdog/solarized-osaka.nvim]]
+#+begin_src conf :tangle no
+# Solarized Osaka
+# ------------------------------------------
+# set notification-error-bg "#cb4b16"
+# set notification-error-fg "#839496"
+# set notification-warning-bg "#b58900"
+# set notification-warning-fg "#002b36"
+# set notification-bg "#00212B"
+# set notification-fg "#A5B6B6"
+# set completion-bg "#00212B"
+# set completion-fg "#586e75"
+# set completion-group-bg "#00212B"
+# set completion-group-fg "#586e75"
+# set completion-highlight-bg "#002b36"
+# set completion-highlight-fg "#A5B6B6"
+# set index-bg "#00212B"
+# set index-fg "#A5B6B6"
+# set index-active-bg "#002b36"
+# set index-active-fg "#A5B6B6"
+# set inputbar-bg "#00212B"
+# set inputbar-fg "#A5B6B6"
+# set statusbar-bg "#00212B"
+# set statusbar-fg "#A5B6B6"
+# set highlight-color "#b58900"
+# set highlight-active-color "#859900"
+# set default-bg "#00212B"
+# set default-fg "#A5B6B6"
+# set recolor-lightcolor "#00212B" # base02
+# set recolor-darkcolor "#A5B6B6" # base1
+# set render-loading-fg "#00212B"
+# set render-loading-bg "#A5B6B6"
+#+end_src
+
+* SXIV
+Example for =$XDG_CONFIG_HOME/sxiv/exec/key-handler=. Called by *sxiv(1)* after the external prefix key (=C-x= by default) is pressed. The next key combo is passed as its first argument. Passed via stdin are the
+images to act upon, one path per line: all marked images, if in thumbnail mode and at least one image has been marked, otherwise the current image *sxiv(1)* blocks until this script terminates. It then checks which images
+have been modified and reloads them. The key combo argument has the following form: "=[C-][M-][S-]KEY=", where =C/M/S= indicate =Ctrl/Meta(Alt)/Shift= modifier states and =KEY= is the =X= keysym as listed in =/usr/include/X11/keysymdef.h= without the "=XK_=" prefix.
+#+begin_src bash :tangle ./sxiv/exec/key-handler :shebang "#!/usr/bin/env bash"
+rotate() {
+    degree="$1"
+    tr '\n' '\0' | xargs -0 realpath | sort | uniq | while read file; do
+	case "$(file -b -i "$file")" in
+	    image/jpeg*)
+		jpegtran -rotate "$degree" -copy all -outfile "$file" "$file"
+	    ;;
+	    *)
+		mogrify  -rotate "$degree" "$file" ;;
+        esac
+    done
+}
+
+while read file
+do
+    case "$1" in
+        "c")
+            xclip -selection clipboard -target image/png "$file" &&
+            notify-send "$file has been copied to clipboard." && exit 0
+        ;;
+        "d")
+            [ "$(printf "No\\nYes" | dmenu -i -p "Really delete $file?")" = "Yes" ] &&
+            rm "$file" && notify-send "$file deleted."
+        ;;
+        "g")
+            pacman -Qq "gimpr" >/dev/null 2>&1 && gimp "$file" ||
+            notify-send "ERROR" "\nGimp is not installed! Install gimp if you want to use this function in sxiv:\n\nsudo package-manager-install-command gimp" &&
+            exit 1;
+        ;;
+        "i")
+            notify-send "File information" \
+            "$(mediainfo "$file" | tr -s ' ' | grep -v CompleteName_Last)"
+        ;;
+        "x")
+            setwall.sh $file &&
+            filename=$HOME/.cache/wall
+            if [ ! -f $filename ]; then
+                touch $filename
+            fi
+            echo "$file" > $HOME/.cache/wall &&
+            notify-send "$file has been set as your wallpaper." && exit 0
+        ;;
+        "7")
+            rotate 270
+        ;;
+        "8")
+            rotate 180
+        ;;
+        "9")
+            rotate 90
+        ;;
+        esac
+done
+#+end_src
+
+* SXHKD
+#+begin_src bash :tangle ./sxhkd/sxhkdrc :shebang "#!/usr/bin/env bash"
+### WM INDEPENDENT KEYBINDINGS ###
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+### BSPWM HOTKEYS ###
+
+# terminal emulator
+super + Return
+	alacritty
+
+# run program launcher
+super + d
+	dm_run.py
+
+# run file man
+super + e
+	thunar
+
+# quit/restart bspwm
+super + x
+	dm-logout
+
+# quit/restart bspwm
+super + shift + {q,F5}
+	bspc {quit,wm -r}
+
+# close and kill
+super + q
+	bspc node -c
+
+# terminal emulator
+super + slash
+	dtos-help
+
+# alternate between the tiled and monocle layout
+super + Tab
+	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+super + y
+	bspc node newest.marked.local -n newest.!automatic.local
+
+# swap the current node and the biggest node
+super + BackSpace
+	bspc node -s biggest.local
+
+# swap the current node and the biggest node
+super + m
+	bspc node -f biggest.local
+
+# STATE/FLAGS
+
+# set the window state
+super + {t,shift + t,shift + space,f}
+	bspc node -t {\~tiled,\~pseudo_tiled,\~floating,\~fullscreen}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+
+# FOCUS/SWAP
+
+# focus the node in the given direction
+# super + {_,shift + }{h,j,k,l}
+# 	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {shift + p, shift + b, ctrl + f, ctrl + s}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous node in the current desktop
+super + {j, k}
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + {Left, Right}
+ 	bspc desktop -f {prev,next}.local
+
+# focus the next/previous monitor
+super + {comma, period}
+    bspc monitor -f {prev,next}
+
+super + {shift + comma, shift + period}
+    bspc node -s {prev,next}
+
+# focus the last node/desktop
+alt + {shift + Tab,Tab}
+	bspc {node,desktop} -f last.local
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} focused:'^{1-9,10}'
+
+# PRESELECT
+
+# preselect the direction
+# super + ctrl + {h,j,k,l}
+# 	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# MOVE/RESIVE
+# shrink/expand
+# ctrl + alt + h
+# 	bspc node -z {left -20 0} || bspc node -z {right -20 0}
+# ctrl + alt + j
+# 	bspc node -z {bottom 0 20} || bspc node -z {top 0 20}
+# ctrl + alt + k
+# 	bspc node -z {bottom 0 -20} || bspc node -z {top 0 -20}
+# ctrl + alt + l
+# 	bspc node -z {left 20 0} || bspc node -z {right 20 0}
+
+# super + r : h
+# 	bspc node -z {left -20 0} || bspc node -z {right -20 0}
+# super + r : j
+# 	bspc node -z {bottom 0 20} || bspc node -z {top 0 20}
+# super + r : k
+# 	bspc node -z {bottom 0 -20} || bspc node -z {top 0 -20}
+# super + r : l
+# 	bspc node -z {left 20 0} || bspc node -z {right 20 0}
+
+# Expand/contract a window by moving one of its side outward/inward
+super + r : {h,j,k,l}
+    STEP=20; SELECTION={1,2,3,4}; \
+    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# launch qutebrowser
+super + b
+    microsoft-edge
+
+# dmscripts (SUPER + p followed by another key)
+super + p; h
+    dm-hub
+super + p; {a}
+    dm-sounds
+super + p; {b}
+    dm-setbg
+super + p; {c}
+    dtos-colorscheme
+super + p; {shift + c}
+    dm-colpick
+super + p; {e}
+    dm-confedit
+super + p; {i}
+    dm-maim
+super + p; {k}
+    dm-kill
+super + p; {m}
+    dm-man
+super + p; {n}
+    dm-note
+super + p; {o}
+    dm-bookman
+super + p; p
+    passmenu -p Pass:
+super + p; {q}
+    dm-logout
+super + p; {r}
+    dm-radio
+super + p; {s}
+    dm-websearch
+super + p; {t}
+    dm-translate
+
+# emacs (SUPER + e followed by another key)
+super + c; e
+    emacsclient -c -a 'emacs'
+super + c; a
+    emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/\")'
+super + c; b
+    emacsclient -c -a 'emacs' --eval '(ibuffer)'
+super + c; d
+    emacsclient -c -a 'emacs' --eval '(dired nil)'
+super + c; i
+    emacsclient -c -a 'emacs' --eval '(erc)'
+super + c; n
+    emacsclient -c -a 'emacs' --eval '(elfeed)'
+super + c; s
+    emacsclient -c -a 'emacs' --eval '(eshell)'
+super + c; v
+    emacsclient -c -a 'emacs' --eval '(+vterm/here nil)'
+super + c; w
+    emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(eww "distro.tube"))'
+
+
+# add to tabbed container
+# ctrl + alt + {Left,Down,Up,Right}
+super + ctrl + {h,j,k,l}
+    tabc attach $(bspc query -N -n) {$(bspc query -N -n west),$(bspc query -N -n south),$(bspc query -N -n north),$(bspc query -N -n east)}
+
+# create/remove from tabbed container
+super + z
+    id=$(bspc query -N -n); \
+    [[ "$(tabc printclass $id)" == "tabbed" ]] \
+    && tabc detach $id \
+    || tabc create $id
+
+# toggle autoattach in tabbed container
+super + shift + z
+    tabc autoattach $(bspc query -N -n)
+
+
+super + shift + {j,k}
+    bspc node @/ -C {forward,backward}
+
+XF86MonBrightnessUp
+	brightnesscontrol.sh i
+
+XF86MonBrightnessDown
+	brightnesscontrol.sh d
+
+XF86AudioRaiseVolume
+	volumecontrol.sh -o i
+
+XF86AudioLowerVolume
+	volumecontrol.sh -o d
+
+XF86AudioMute
+	volumecontrol.sh -o m
+
+#+end_src
+* SUCKLESS TOOLS
+** tabbed
+Look at: /comming soon/
+** slock
+Look at: [[https://github.com/firman-qs/.dotfiles/tree/main/.config/suckless/slock][github.com/firman-qs/.dotfiles/tree/main/.config/suckless/slock]]
+** dwmblocks
+Look at: [[https://github.com/firman-qs/.dotfiles/tree/main/.config/suckless/dwmblocks][github.com/firman-qs/.dotfiles/tree/main/.config/suckless/dwmblocks]]
+** dmenu
+Look at: [[https://github.com/firman-qs/.dotfiles/tree/main/.config/suckless/dmenu][github.com/firman-qs/.dotfiles/tree/main/.config/suckless/dmenu]]
+* MPD
+#+begin_src conf :tangle ./mpd/mpd.conf
+bind_to_address   "localhost"
+port              "6600"
+music_directory   "/home/firmanqs/Music"
+playlist_directory "/home/firmanqs/Music"
+db_file           "~/.config/mpd/database"
+log_file          "~/.config/mpd/mpd.log"
+pid_file          "~/.config/mpd/pid"
+state_file        "~/.config/mpd/state"
+sticker_file      "~/.config/mpd/sticker.sql"
+log_level        "default"
+auto_update      "yes"
+auto_update_depth  "3"
+
+input {
+	plugin "curl"
+}
+
+audio_output {
+	type   "pulse"
+	name   "Pulse Audio"
+}
+
+audio_output {
+	type   "fifo"
+	name   "my_fifo"
+	path   "/tmp/mpd.fifo"
+	format "44100:16:2"
+}
+#+end_src
+* NCMPCPP
+#+begin_src conf :tangle ./ncmpcpp/config
+mpd_host = "localhost"
+mpd_port = 6600
+mpd_connection_timeout = "5"
+mpd_crossfade_time = "5"
+mpd_music_dir = ~/Music
+lyrics_directory  = ~/.config/ncmpcpp/lyrics
+execute_on_song_change = notify-send "♫ Now Playing" "$(mpc current)"
+
+visualizer_data_source = /tmp/mpd.fifo
+visualizer_output_name = my_fifo
+visualizer_in_stereo = "no"
+visualizer_fps = "60"
+visualizer_type = "wave_filled"
+
+# visualizer_look = "││"
+# visualizer_look = "+|"
+# visualizer_look = "∙▋"
+# visualizer_look = "|▋"
+#visualizer_look = "▒░"
+#visualizer_look = "◈░"
+# visualizer_look = "┃┃"
+# visualizer_look = ●┃
+visualizer_look = "█┇"
+#visualizer_look = "▒░"
+#visualizer_look = "▋▍"
+#visualizer_look = "▋█"
+#visualizer_look = "▋█"
+#visualizer_look = "▋░"
+#visualizer_look = "▋▓"
+#visualizer_look = "▋☰"
+#visualizer_look = "☰⛆"
+#visualizer_look = "☰▓"
+#visualizer_look = "●▉"
+
+visualizer_color = blue, green, yellow, magenta, red
+visualizer_spectrum_smooth_look = "yes"
+
+# General
+connected_message_on_startup = "yes"
+cyclic_scrolling = "yes"
+mouse_support = "yes"
+mouse_list_scroll_whole_page = "yes"
+lines_scrolled = "1"
+message_delay_time = "1"
+playlist_shorten_total_times = "yes"
+playlist_display_mode = "classic"
+browser_display_mode = "classic"
+search_engine_display_mode = "classic"
+playlist_editor_display_mode = "classic"
+autocenter_mode = "yes"
+centered_cursor = "yes"
+user_interface = "classic"
+follow_now_playing_lyrics = "yes"
+locked_screen_width_part = "50"
+ask_for_locked_screen_width_part = "no"
+display_bitrate = "no"
+external_editor = "nvim"
+main_window_color = "default"
+startup_screen = "playlist"
+
+# Progress bar
+progressbar_look = "━━ "
+progressbar_elapsed_color = "magenta"
+
+# UI Visibility
+header_visibility = "no"
+statusbar_visibility = "yes"
+titles_visibility = "yes"
+enable_window_title = "yes"
+clock_display_seconds = no
+
+# Colors
+color1 = "white"
+color2 = "blue"
+
+# UI Appearance
+now_playing_prefix = "$b$6» "
+now_playing_suffix = "$/b$9"
+current_item_prefix = "$b$3* "
+song_list_format = "{%t}|{%f}$R{%a}  {%l}"
+song_status_format = {%t by %a}|{%f}
+song_library_format = {{%a - %t} (%b)}|{%f}
+#+end_src
+
+* NEOFETCH
+#+begin_src conf :tangle ./neofetch/config.conf
+# See this wiki page for more info:
+# https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
+print_info() {
+    info title
+    info underline
+	info " ​ ​ ${cl5}██ OS" distro
+	info " ​ ​ ${cl2}██ Kernel" kernel
+	info " ​ ​ ${cl6}██ Uptime" uptime
+	info " ​ ​ ${cl1}██ Packages" packages
+	info " ​ ​ ${cl4}██ Shell" shell
+	info " ​ ​ ${cl7}██ WM" wm
+	info " ​ ​ ${cl4}██ CPU" cpu
+	info " ​ ​ ${cl3}██ Memory" memory
+
+    # info cols
+    # info "Host" model
+    # info "Kernel" kernel
+    # info "Resolution" resolution
+    # info "DE" de
+    # info "WM Theme" wm_theme
+    # info "Theme" theme
+    # info "Icons" icons
+    # info "Terminal" term
+    # info "Terminal Font" term_font
+    # info "CPU" cpu
+    # info "GPU" gpu
+    # info "Memory" memory
+    # info "GPU Driver" gpu_driver  # Linux/macOS only
+    # info "CPU Usage" cpu_usage
+    # info "Disk" disk
+    # info "Battery" battery
+    # info "Font" font
+    # info "Song" song
+    # [[ "$player" ]] && prin "Music Player" "$player"
+    # info "Local IP" local_ip
+    # info "Public IP" public_ip
+    # info "Users" users
+    # info "Locale" locale  # This only works on glibc systems.
+    # info cols
+}
+
+# Title
+
+# Hide/Show Fully qualified domain name.
+#
+# Default:  'off'
+# Values:   'on', 'off'
+# Flag:     --title_fqdn
+title_fqdn="off"
+
+
+# Kernel
+
+# Shorten the output of the kernel function.
+#
+# Default:  'on'
+# Values:   'on', 'off'
+# Flag:     --kernel_shorthand
+# Supports: Everything except *BSDs (except PacBSD and PC-BSD)
+#
+# Example:
+# on:  '4.8.9-1-ARCH'
+# off: 'Linux 4.8.9-1-ARCH'
+kernel_shorthand="on"
+
+
+# Distro
+
+# Shorten the output of the distro function
+#
+# Default:  'off'
+# Values:   'on', 'tiny', 'off'
+# Flag:     --distro_shorthand
+# Supports: Everything except Windows and Haiku
+distro_shorthand="on"
+
+# Show/Hide OS Architecture.
+# Show 'x86_64', 'x86' and etc in 'Distro:' output.
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --os_arch
+#
+# Example:
+# on:  'Arch Linux x86_64'
+# off: 'Arch Linux'
+os_arch="on"
+
+
+# Uptime
+
+
+# Shorten the output of the uptime function
+#
+# Default: 'on'
+# Values:  'on', 'tiny', 'off'
+# Flag:    --uptime_shorthand
+#
+# Example:
+# on:   '2 days, 10 hours, 3 mins'
+# tiny: '2d 10h 3m'
+# off:  '2 days, 10 hours, 3 minutes'
+uptime_shorthand="on"
+
+
+# Memory
+
+
+# Show memory pecentage in output.
+#
+# Default: 'off'
+# Values:  'on', 'off'
+# Flag:    --memory_percent
+#
+# Example:
+# on:   '1801MiB / 7881MiB (22%)'
+# off:  '1801MiB / 7881MiB'
+memory_percent="off"
+
+# Change memory output unit.
+#
+# Default: 'mib'
+# Values:  'kib', 'mib', 'gib'
+# Flag:    --memory_unit
+#
+# Example:
+# kib  '1020928KiB / 7117824KiB'
+# mib  '1042MiB / 6951MiB'
+# gib: ' 0.98GiB / 6.79GiB'
+memory_unit="mib"
+
+
+# Packages
+
+
+# Show/Hide Package Manager names.
+#
+# Default: 'tiny'
+# Values:  'on', 'tiny' 'off'
+# Flag:    --package_managers
+#
+# Example:
+# on:   '998 (pacman), 8 (flatpak), 4 (snap)'
+# tiny: '908 (pacman, flatpak, snap)'
+# off:  '908'
+package_managers="on"
+
+
+# Shell
+
+
+# Show the path to $SHELL
+#
+# Default: 'off'
+# Values:  'on', 'off'
+# Flag:    --shell_path
+#
+# Example:
+# on:  '/bin/bash'
+# off: 'bash'
+shell_path="off"
+
+# Show $SHELL version
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --shell_version
+#
+# Example:
+# on:  'bash 4.4.5'
+# off: 'bash'
+shell_version="on"
+
+
+# CPU
+
+
+# CPU speed type
+#
+# Default: 'bios_limit'
+# Values: 'scaling_cur_freq', 'scaling_min_freq', 'scaling_max_freq', 'bios_limit'.
+# Flag:    --speed_type
+# Supports: Linux with 'cpufreq'
+# NOTE: Any file in '/sys/devices/system/cpu/cpu0/cpufreq' can be used as a value.
+speed_type="bios_limit"
+
+# CPU speed shorthand
+#
+# Default: 'off'
+# Values: 'on', 'off'.
+# Flag:    --speed_shorthand
+# NOTE: This flag is not supported in systems with CPU speed less than 1 GHz
+#
+# Example:
+# on:    'i7-6500U (4) @ 3.1GHz'
+# off:   'i7-6500U (4) @ 3.100GHz'
+speed_shorthand="on"
+
+# Enable/Disable CPU brand in output.
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --cpu_brand
+#
+# Example:
+# on:   'Intel i7-6500U'
+# off:  'i7-6500U (4)'
+cpu_brand="off"
+
+# CPU Speed
+# Hide/Show CPU speed.
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --cpu_speed
+#
+# Example:
+# on:  'Intel i7-6500U (4) @ 3.1GHz'
+# off: 'Intel i7-6500U (4)'
+cpu_speed="on"
+
+# CPU Cores
+# Display CPU cores in output
+#
+# Default: 'logical'
+# Values:  'logical', 'physical', 'off'
+# Flag:    --cpu_cores
+# Support: 'physical' doesn't work on BSD.
+#
+# Example:
+# logical:  'Intel i7-6500U (4) @ 3.1GHz' (All virtual cores)
+# physical: 'Intel i7-6500U (2) @ 3.1GHz' (All physical cores)
+# off:      'Intel i7-6500U @ 3.1GHz'
+cpu_cores="logical"
+
+# CPU Temperature
+# Hide/Show CPU temperature.
+# Note the temperature is added to the regular CPU function.
+#
+# Default: 'off'
+# Values:  'C', 'F', 'off'
+# Flag:    --cpu_temp
+# Supports: Linux, BSD
+# NOTE: For FreeBSD and NetBSD-based systems, you'll need to enable
+#       coretemp kernel module. This only supports newer Intel processors.
+#
+# Example:
+# C:   'Intel i7-6500U (4) @ 3.1GHz [27.2°C]'
+# F:   'Intel i7-6500U (4) @ 3.1GHz [82.0°F]'
+# off: 'Intel i7-6500U (4) @ 3.1GHz'
+cpu_temp="on"
+
+
+# GPU
+
+
+# Enable/Disable GPU Brand
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --gpu_brand
+#
+# Example:
+# on:  'AMD HD 7950'
+# off: 'HD 7950'
+gpu_brand="off"
+
+# Which GPU to display
+#
+# Default: 'all'
+# Values:  'all', 'dedicated', 'integrated'
+# Flag:    --gpu_type
+# Supports: Linux
+#
+# Example:
+# all:
+#   GPU1: AMD HD 7950
+#   GPU2: Intel Integrated Graphics
+#
+# dedicated:
+#   GPU1: AMD HD 7950
+#
+# integrated:
+#   GPU1: Intel Integrated Graphics
+gpu_type="all"
+
+
+# Resolution
+
+
+# Display refresh rate next to each monitor
+# Default: 'off'
+# Values:  'on', 'off'
+# Flag:    --refresh_rate
+# Supports: Doesn't work on Windows.
+#
+# Example:
+# on:  '1920x1080 @ 60Hz'
+# off: '1920x1080'
+refresh_rate="off"
+
+
+# Gtk Theme / Icons / Font
+
+
+# Shorten output of GTK Theme / Icons / Font
+#
+# Default: 'off'
+# Values:  'on', 'off'
+# Flag:    --gtk_shorthand
+#
+# Example:
+# on:  'Numix, Adwaita'
+# off: 'Numix [GTK2], Adwaita [GTK3]'
+gtk_shorthand="off"
+
+
+# Enable/Disable gtk2 Theme / Icons / Font
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --gtk2
+#
+# Example:
+# on:  'Numix [GTK2], Adwaita [GTK3]'
+# off: 'Adwaita [GTK3]'
+gtk2="on"
+
+# Enable/Disable gtk3 Theme / Icons / Font
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --gtk3
+#
+# Example:
+# on:  'Numix [GTK2], Adwaita [GTK3]'
+# off: 'Numix [GTK2]'
+gtk3="on"
+
+
+# IP Address
+
+
+# Website to ping for the public IP
+#
+# Default: 'http://ident.me'
+# Values:  'url'
+# Flag:    --ip_host
+public_ip_host="http://ident.me"
+
+# Public IP timeout.
+#
+# Default: '2'
+# Values:  'int'
+# Flag:    --ip_timeout
+public_ip_timeout=2
+
+
+# Desktop Environment
+
+
+# Show Desktop Environment version
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --de_version
+de_version="on"
+
+
+# Disk
+
+
+# Which disks to display.
+# The values can be any /dev/sdXX, mount point or directory.
+# NOTE: By default we only show the disk info for '/'.
+#
+# Default: '/'
+# Values:  '/', '/dev/sdXX', '/path/to/drive'.
+# Flag:    --disk_show
+#
+# Example:
+# disk_show=('/' '/dev/sdb1'):
+#      'Disk (/): 74G / 118G (66%)'
+#      'Disk (/mnt/Videos): 823G / 893G (93%)'
+#
+# disk_show=('/'):
+#      'Disk (/): 74G / 118G (66%)'
+#
+disk_show=('/')
+
+# Disk subtitle.
+# What to append to the Disk subtitle.
+#
+# Default: 'mount'
+# Values:  'mount', 'name', 'dir', 'none'
+# Flag:    --disk_subtitle
+#
+# Example:
+# name:   'Disk (/dev/sda1): 74G / 118G (66%)'
+#         'Disk (/dev/sdb2): 74G / 118G (66%)'
+#
+# mount:  'Disk (/): 74G / 118G (66%)'
+#         'Disk (/mnt/Local Disk): 74G / 118G (66%)'
+#         'Disk (/mnt/Videos): 74G / 118G (66%)'
+#
+# dir:    'Disk (/): 74G / 118G (66%)'
+#         'Disk (Local Disk): 74G / 118G (66%)'
+#         'Disk (Videos): 74G / 118G (66%)'
+#
+# none:   'Disk: 74G / 118G (66%)'
+#         'Disk: 74G / 118G (66%)'
+#         'Disk: 74G / 118G (66%)'
+disk_subtitle="mount"
+
+# Disk percent.
+# Show/Hide disk percent.
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --disk_percent
+#
+# Example:
+# on:  'Disk (/): 74G / 118G (66%)'
+# off: 'Disk (/): 74G / 118G'
+disk_percent="on"
+
+
+# Song
+
+
+# Manually specify a music player.
+#
+# Default: 'auto'
+# Values:  'auto', 'player-name'
+# Flag:    --music_player
+#
+# Available values for 'player-name':
+#
+# amarok
+# audacious
+# banshee
+# bluemindo
+# clementine
+# cmus
+# deadbeef
+# deepin-music
+# dragon
+# elisa
+# exaile
+# gnome-music
+# gmusicbrowser
+# gogglesmm
+# guayadeque
+# io.elementary.music
+# iTunes
+# juk
+# lollypop
+# mocp
+# mopidy
+# mpd
+# muine
+# netease-cloud-music
+# olivia
+# playerctl
+# pogo
+# pragha
+# qmmp
+# quodlibet
+# rhythmbox
+# sayonara
+# smplayer
+# spotify
+# strawberry
+# tauonmb
+# tomahawk
+# vlc
+# xmms2d
+# xnoise
+# yarock
+music_player="auto"
+
+# Format to display song information.
+#
+# Default: '%artist% - %album% - %title%'
+# Values:  '%artist%', '%album%', '%title%'
+# Flag:    --song_format
+#
+# Example:
+# default: 'Song: Jet - Get Born - Sgt Major'
+song_format="%artist% - %album% - %title%"
+
+# Print the Artist, Album and Title on separate lines
+#
+# Default: 'off'
+# Values:  'on', 'off'
+# Flag:    --song_shorthand
+#
+# Example:
+# on:  'Artist: The Fratellis'
+#      'Album: Costello Music'
+#      'Song: Chelsea Dagger'
+#
+# off: 'Song: The Fratellis - Costello Music - Chelsea Dagger'
+song_shorthand="off"
+
+# 'mpc' arguments (specify a host, password etc).
+#
+# Default:  ''
+# Example: mpc_args=(-h HOST -P PASSWORD)
+mpc_args=()
+
+
+# Text Colors
+
+
+# Text Colors
+#
+# Default:  'distro'
+# Values:   'distro', 'num' 'num' 'num' 'num' 'num' 'num'
+# Flag:     --colors
+#
+# Each number represents a different part of the text in
+# this order: 'title', '@', 'underline', 'subtitle', 'colon', 'info'
+#
+# Example:
+# colors=(distro)      - Text is colored based on Distro colors.
+# colors=(4 6 1 8 8 6) - Text is colored in the order above.
+colors=(distro)
+
+
+# Text Options
+
+
+# Toggle bold text
+#
+# Default:  'on'
+# Values:   'on', 'off'
+# Flag:     --bold
+bold="on"
+
+# Enable/Disable Underline
+#
+# Default:  'on'
+# Values:   'on', 'off'
+# Flag:     --underline
+underline_enabled="on"
+
+# Underline character
+#
+# Default:  '-'
+# Values:   'string'
+# Flag:     --underline_char
+underline_char="-"
+
+
+# Info Separator
+# Replace the default separator with the specified string.
+#
+# Default:  ':'
+# Flag:     --separator
+#
+# Example:
+# separator="->":   'Shell-> bash'
+# separator=" =":   'WM = dwm'
+separator=":"
+
+
+# Color Blocks
+
+
+# Color block range
+# The range of colors to print.
+#
+# Default:  '0', '15'
+# Values:   'num'
+# Flag:     --block_range
+#
+# Example:
+#
+# Display colors 0-7 in the blocks.  (8 colors)
+# neofetch --block_range 0 7
+#
+# Display colors 0-15 in the blocks. (16 colors)
+# neofetch --block_range 0 15
+block_range=(0 15)
+
+# Toggle color blocks
+#
+# Default:  'on'
+# Values:   'on', 'off'
+# Flag:     --color_blocks
+color_blocks="on"
+
+# Color block width in spaces
+#
+# Default:  '3'
+# Values:   'num'
+# Flag:     --block_width
+block_width=3
+
+# Color block height in lines
+#
+# Default:  '1'
+# Values:   'num'
+# Flag:     --block_height
+block_height=1
+
+# Color Alignment
+#
+# Default: 'auto'
+# Values: 'auto', 'num'
+# Flag: --col_offset
+#
+# Number specifies how far from the left side of the terminal (in spaces) to
+# begin printing the columns, in case you want to e.g. center them under your
+# text.
+# Example:
+# col_offset="auto" - Default behavior of neofetch
+# col_offset=7      - Leave 7 spaces then print the colors
+col_offset="auto"
+
+# Progress Bars
+
+
+# Bar characters
+#
+# Default:  '-', '='
+# Values:   'string', 'string'
+# Flag:     --bar_char
+#
+# Example:
+# neofetch --bar_char 'elapsed' 'total'
+# neofetch --bar_char '-' '='
+bar_char_elapsed="-"
+bar_char_total="="
+
+# Toggle Bar border
+#
+# Default:  'on'
+# Values:   'on', 'off'
+# Flag:     --bar_border
+bar_border="on"
+
+# Progress bar length in spaces
+# Number of chars long to make the progress bars.
+#
+# Default:  '15'
+# Values:   'num'
+# Flag:     --bar_length
+bar_length=15
+
+# Progress bar colors
+# When set to distro, uses your distro's logo colors.
+#
+# Default:  'distro', 'distro'
+# Values:   'distro', 'num'
+# Flag:     --bar_colors
+#
+# Example:
+# neofetch --bar_colors 3 4
+# neofetch --bar_colors distro 5
+bar_color_elapsed="distro"
+bar_color_total="distro"
+
+
+# Info display
+# Display a bar with the info.
+#
+# Default: 'off'
+# Values:  'bar', 'infobar', 'barinfo', 'off'
+# Flags:   --cpu_display
+#          --memory_display
+#          --battery_display
+#          --disk_display
+#
+# Example:
+# bar:     '[---=======]'
+# infobar: 'info [---=======]'
+# barinfo: '[---=======] info'
+# off:     'info'
+cpu_display="off"
+memory_display="off"
+battery_display="off"
+disk_display="off"
+
+
+# Backend Settings
+
+
+# Image backend.
+#
+# Default:  'ascii'
+# Values:   'ascii', 'caca', 'chafa', 'jp2a', 'iterm2', 'off',
+#           'pot', 'termpix', 'pixterm', 'tycat', 'w3m', 'kitty'
+# Flag:     --backend
+image_backend="w3m"
+
+# Image Source
+#
+# Which image or ascii file to display.
+#
+# Default:  'auto'
+# Values:   'auto', 'ascii', 'wallpaper', '/path/to/img', '/path/to/ascii', '/path/to/dir/'
+#           'command output (neofetch --ascii "$(fortune | cowsay -W 30)")'
+# Flag:     --source
+#
+# NOTE: 'auto' will pick the best image source for whatever image backend is used.
+#       In ascii mode, distro ascii art will be used and in an image mode, your
+#       wallpaper will be used.
+image_source="~/Pictures/logo-um.png"
+
+
+# Ascii Options
+
+
+# Ascii distro
+# Which distro's ascii art to display.
+#
+# Default: 'auto'
+# Values:  'auto', 'distro_name'
+# Flag:    --ascii_distro
+# NOTE: AIX, Alpine, Anarchy, Android, Antergos, antiX, "AOSC OS",
+#       "AOSC OS/Retro", Apricity, ArcoLinux, ArchBox, ARCHlabs,
+#       ArchStrike, XFerience, ArchMerge, Arch, Artix, Arya, Bedrock,
+#       Bitrig, BlackArch, BLAG, BlankOn, BlueLight, bonsai, BSD,
+#       BunsenLabs, Calculate, Carbs, CentOS, Chakra, ChaletOS,
+#       Chapeau, Chrom*, Cleanjaro, ClearOS, Clear_Linux, Clover,
+#       Condres, Container_Linux, CRUX, Cucumber, Debian, Deepin,
+#       DesaOS, Devuan, DracOS, DarkOs, DragonFly, Drauger, Elementary,
+#       EndeavourOS, Endless, EuroLinux, Exherbo, Fedora, Feren, FreeBSD,
+#       FreeMiNT, Frugalware, Funtoo, GalliumOS, Garuda, Gentoo, Pentoo,
+#       gNewSense, GNOME, GNU, GoboLinux, Grombyang, Guix, Haiku, Huayra,
+#       Hyperbola, janus, Kali, KaOS, KDE_neon, Kibojoe, Kogaion,
+#       Korora, KSLinux, Kubuntu, LEDE, LFS, Linux_Lite,
+#       LMDE, Lubuntu, Lunar, macos, Mageia, MagpieOS, Mandriva,
+#       Manjaro, Maui, Mer, Minix, LinuxMint, MX_Linux, Namib,
+#       Neptune, NetBSD, Netrunner, Nitrux, NixOS, Nurunner,
+#       NuTyX, OBRevenge, OpenBSD, openEuler, OpenIndiana, openmamba,
+#       OpenMandriva, OpenStage, OpenWrt, osmc, Oracle, OS Elbrus, PacBSD,
+#       Parabola, Pardus, Parrot, Parsix, TrueOS, PCLinuxOS, Peppermint,
+#       popos, Porteus, PostMarketOS, Proxmox, Puppy, PureOS, Qubes, Radix,
+#       Raspbian, Reborn_OS, Redstar, Redcore, Redhat, Refracted_Devuan,
+#       Regata, Rosa, sabotage, Sabayon, Sailfish, SalentOS, Scientific,
+#       Septor, SereneLinux, SharkLinux, Siduction, Slackware, SliTaz,
+#       SmartOS, Solus, Source_Mage, Sparky, Star, SteamOS, SunOS,
+#       openSUSE_Leap, openSUSE_Tumbleweed, openSUSE, SwagArch, Tails,
+#       Trisquel, Ubuntu-Budgie, Ubuntu-GNOME, Ubuntu-MATE, Ubuntu-Studio,
+#       Ubuntu, Venom, Void, Obarun, windows10, Windows7, Xubuntu, Zorin,
+#       and IRIX have ascii logos
+# NOTE: Arch, Ubuntu, Redhat, and Dragonfly have 'old' logo variants.
+#       Use '{distro name}_old' to use the old logos.
+# NOTE: Ubuntu has flavor variants.
+#       Change this to Lubuntu, Kubuntu, Xubuntu, Ubuntu-GNOME,
+#       Ubuntu-Studio, Ubuntu-Mate  or Ubuntu-Budgie to use the flavors.
+# NOTE: Arcolinux, Dragonfly, Fedora, Alpine, Arch, Ubuntu,
+#       CRUX, Debian, Gentoo, FreeBSD, Mac, NixOS, OpenBSD, android,
+#       Antrix, CentOS, Cleanjaro, ElementaryOS, GUIX, Hyperbola,
+#       Manjaro, MXLinux, NetBSD, Parabola, POP_OS, PureOS,
+#       Slackware, SunOS, LinuxLite, OpenSUSE, Raspbian,
+#       postmarketOS, and Void have a smaller logo variant.
+#       Use '{distro name}_small' to use the small variants.
+ascii_distro="linuxmint_small"
+
+# Ascii Colors
+#
+# Default:  'distro'
+# Values:   'distro', 'num' 'num' 'num' 'num' 'num' 'num'
+# Flag:     --ascii_colors
+#
+# Example:
+# ascii_colors=(distro)      - Ascii is colored based on Distro colors.
+# ascii_colors=(4 6 1 8 8 6) - Ascii is colored using these colors.
+ascii_colors=(distro)
+
+# Bold ascii logo
+# Whether or not to bold the ascii logo.
+#
+# Default: 'on'
+# Values:  'on', 'off'
+# Flag:    --ascii_bold
+ascii_bold="on"
+
+
+# Image Options
+
+
+# Image loop
+# Setting this to on will make neofetch redraw the image constantly until
+# Ctrl+C is pressed. This fixes display issues in some terminal emulators.
+#
+# Default:  'off'
+# Values:   'on', 'off'
+# Flag:     --loop
+image_loop="off"
+
+# Thumbnail directory
+#
+# Default: '~/.cache/thumbnails/neofetch'
+# Values:  'dir'
+thumbnail_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/neofetch"
+
+# Crop mode
+#
+# Default:  'normal'
+# Values:   'normal', 'fit', 'fill'
+# Flag:     --crop_mode
+#
+# See this wiki page to learn about the fit and fill options.
+# https://github.com/dylanaraps/neofetch/wiki/What-is-Waifu-Crop%3F
+crop_mode="normal"
+
+# Crop offset
+# Note: Only affects 'normal' crop mode.
+#
+# Default:  'center'
+# Values:   'northwest', 'north', 'northeast', 'west', 'center'
+#           'east', 'southwest', 'south', 'southeast'
+# Flag:     --crop_offset
+crop_offset="center"
+
+# Image size
+# The image is half the terminal width by default.
+#
+# Default: 'auto'
+# Values:  'auto', '00px', '00%', 'none'
+# Flags:   --image_size
+#          --size
+image_size="auto"
+
+# Gap between image and text
+#
+# Default: '3'
+# Values:  'num', '-num'
+# Flag:    --gap
+gap=3
+
+# Image offsets
+# Only works with the w3m backend.
+#
+# Default: '0'
+# Values:  'px'
+# Flags:   --xoffset
+#          --yoffset
+yoffset=0
+xoffset=0
+
+# Image background color
+# Only works with the w3m backend.
+#
+# Default: ''
+# Values:  'color', 'blue'
+# Flag:    --bg_color
+background_color=
+
+
+# Misc Options
+
+# Stdout mode
+# Turn off all colors and disables image backend (ASCII/Image).
+# Useful for piping into another command.
+# Default: 'off'
+# Values: 'on', 'off'
+stdout="off"
+
+magenta="\033[1;35m"
+green="\033[1;32m"
+white="\033[1;37m"
+blue="\033[1;34m"
+red="\033[1;31m"
+black="\033[1;40;30m"
+yellow="\033[1;33m"
+cyan="\033[1;36m"
+reset="\033[0m"
+bgyellow="\033[1;43;33m"
+bgwhite="\033[1;47;37m"
+cl0="${reset}"
+cl1="${magenta}"
+cl2="${green}"
+cl3="${white}"
+cl4="${blue}"
+cl5="${red}"
+cl6="${yellow}"
+cl7="${cyan}"
+cl8="${black}"
+cl9="${bgyellow}"
+cl10="${bgwhite}"
+#+end_src
+* DUNST
+See dunst(5) for all configuration options
+#+begin_src conf :tangle ./dunst/dunstrc
+[global]
+    ### Display ###
+
+    # Which monitor should the notifications be displayed on.
+    monitor = 0
+
+    # Display notification on focused monitor.  Possible modes are:
+    #   mouse: follow mouse pointer
+    #   keyboard: follow window with keyboard focus
+    #   none: don't follow anything
+    #
+    # "keyboard" needs a window manager that exports the
+    # _NET_ACTIVE_WINDOW property.
+    # This should be the case for almost all modern window managers.
+    #
+    # If this option is set to mouse or keyboard, the monitor option
+    # will be ignored.
+    follow = none
+
+    ### Geometry ###
+
+    # dynamic width from 0 to 300
+    # width = (0, 300)
+    # constant width of 300
+    width = (300, 900)
+
+    # The maximum height of a single notification, excluding the frame.
+    height = 300
+
+    # Position the notification in the top right corner
+    origin = top-right
+
+    # Offset from the origin
+    offset = 11x30
+
+    # Scale factor. It is auto-detected if value is 0.
+    scale = 0
+
+    # Maximum number of notification (0 means no limit)
+    notification_limit = 20
+
+	### This "GEOMETRY" settings is for older version of dunst,
+    # The geometry of the window:
+    #   [{width}]x{height}[+/-{x}+/-{y}]
+    # The geometry of the message window.
+    # The height is measured in number of notifications everything else
+    # in pixels.  If the width is omitted but the height is given
+    # ("-geometry x2"), the message window expands over the whole screen
+    # (dmenu-like).  If width is 0, the window expands to the longest
+    # message displayed.  A positive x is measured from the left, a
+    # negative from the right side of the screen.  Y is measured from
+    # the top and down respectively.
+    # The width can be negative.  In this case the actual width is the
+    # screen width minus the width defined in within the geometry option.
+    geometry = "300x5-11+30"
+	### end of this older config
+
+    ### Progress bar ###
+
+    # Turn on the progess bar. It appears when a progress hint is passed with
+    # for example dunstify -h int:value:12
+    progress_bar = true
+
+    # Set the progress bar height. This includes the frame, so make sure
+    # it's at least twice as big as the frame width.
+    progress_bar_height = 10
+
+    # Set the frame width of the progress bar
+    progress_bar_frame_width = 0
+
+    # Set the minimum width for the progress bar
+    progress_bar_min_width = 125
+
+    # Set the maximum width for the progress bar
+    progress_bar_max_width = 250
+
+    # Corner radius for the progress bar. 0 disables rounded corners.
+    progress_bar_corner_radius = 0
+
+    # Corner radius for the icon image.
+    icon_corner_radius = 5
+
+    # Show how many messages are currently hidden (because of
+    # notification_limit).
+    indicate_hidden = yes
+
+    # The transparency of the window.  Range: [0; 100].
+    # This option will only work if a compositing window manager is
+    # present (e.g. xcompmgr, compiz, etc.). (X11 only)
+    transparency = 20
+
+    # Draw a line of "separator_height" pixel height between two
+    # notifications.
+    # Set to 0 to disable.
+    # If gap_size is greater than 0, this setting will be ignored.
+    separator_height = 2
+
+    # Padding between text and separator.
+    padding = 8
+
+    # Horizontal padding.
+    horizontal_padding = 8
+
+    # Padding between text and icon.
+    text_icon_padding = 10
+
+    # Defines width in pixels of frame around the notification window.
+    # Set to 0 to disable.
+    frame_width = 2
+
+    # Defines color of the frame around the notification window.
+    frame_color = "#626A6D"
+
+    # Size of gap to display between notifications - requires a compositor.
+    # If value is greater than 0, separator_height will be ignored and a border
+    # of size frame_width will be drawn around each notification instead.
+    # Click events on gaps do not currently propagate to applications below.
+    gap_size = 15
+
+    # Define a color for the separator.
+    # possible values are:
+    #  * auto: dunst tries to find a color fitting to the background;
+    #  * foreground: use the same color as the foreground;
+    #  * frame: use the same color as the frame;
+    #  * anything else will be interpreted as a X color.
+    separator_color = auto
+
+    # Sort messages by urgency.
+    sort = yes
+
+    # Don't remove messages, if the user is idle (no mouse or keyboard input)
+    # for longer than idle_threshold seconds.
+    # Set to 0 to disable.
+    # A client can set the 'transient' hint to bypass this. See the rules
+    # section for how to disable this if necessary
+    # idle_threshold = 120
+
+    ### Text ###
+
+    font = Iosevka Aile 8
+
+    # The spacing between lines.  If the height is smaller than the
+    # font height, it will get raised to the font height.
+    line_height = 3
+
+    # Possible values are:
+    # full: Allow a small subset of html markup in notifications:
+    #        <b>bold</b>
+    #        <i>italic</i>
+    #        <s>strikethrough</s>
+    #        <u>underline</u>
+    #
+    #        For a complete reference see
+    #        <https://docs.gtk.org/Pango/pango_markup.html>.
+    #
+    # strip: This setting is provided for compatibility with some broken
+    #        clients that send markup even though it's not enabled on the
+    #        server. Dunst will try to strip the markup but the parsing is
+    #        simplistic so using this option outside of matching rules for
+    #        specific applications *IS GREATLY DISCOURAGED*.
+    #
+    # no:    Disable markup parsing, incoming notifications will be treated as
+    #        plain text. Dunst will not advertise that it has the body-markup
+    #        capability if this is set as a global setting.
+    #
+    # It's important to note that markup inside the format option will be parsed
+    # regardless of what this is set to.
+    markup = full
+
+    # The format of the message.  Possible variables are:
+    #   %a  appname
+    #   %s  summary
+    #   %b  body
+    #   %i  iconname (including its path)
+    #   %I  iconname (without its path)
+    #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
+    # Markup is allowed
+    # format = "%i/tmp/notifimg.jpg %a\n<b>%s</b>\n%b"
+    format = "<span size="120%"><b>%s</b></span>\n%a"
+
+    # Alignment of message text.
+    # Possible values are "left", "center" and "right".
+    alignment = left
+
+    # Vertical alignment of message text and icon.
+    # Possible values are "top", "center" and "bottom".
+    vertical_alignment = center
+
+    # Show age of message if message is older than show_age_threshold
+    # seconds.
+    # Set to -1 to disable.
+    show_age_threshold = 60
+
+    # Specify where to make an ellipsis in long lines.
+    # Possible values are "start", "middle" and "end".
+    ellipsize = middle
+
+    # Ignore newlines '\n' in notifications.
+    ignore_newline = no
+
+    # Stack together notifications with the same content
+    stack_duplicates = true
+
+    # Hide the count of stacked notifications with the same content
+    hide_duplicate_count = false
+
+    # Display indicators for URLs (U) and actions (A).
+    show_indicators = yes
+
+    ### Icons ###
+
+    # Recursive icon lookup. You can set a single theme, instead of having to
+    # define all lookup paths.
+    #enable_recursive_icon_lookup = true
+
+    # Set icon theme (only used for recursive icon lookup)
+    #icon_theme = Adwaita
+    # You can also set multiple icon themes, with the leftmost one being used first.
+    icon_theme = "Pop Extended (Dark), Tela-circle-dracula"
+
+    # Align icons left/right/top/off
+    icon_position = left
+
+    # Scale small icons up to this size, set to 0 to disable. Helpful
+    # for e.g. small files or high-dpi screens. In case of conflict,
+    # max_icon_size takes precedence over this.
+    min_icon_size = 32
+
+    # Scale larger icons down to this size, set to 0 to disable
+    max_icon_size = 128
+
+    # Paths to default icons (only neccesary when not using recursive icon lookup)
+    icon_path = /usr/share/icons/Tela-circle-dracula/16/actions:/usr/share/icons/Tela-circle-dracula/16/apps:/usr/share/icons/Tela-circle-dracula/16/devices:/usr/share/icons/Tela-circle-dracula/16/mimetypes:/usr/share/icons/Tela-circle-dracula/16/panel:/usr/share/icons/Tela-circle-dracula/16/places:/usr/share/icons/Tela-circle-dracula/16/status
+
+    ### History ###
+
+    # Should a notification popped up from history be sticky or timeout
+    # as if it would normally do.
+    sticky_history = yes
+
+    # Maximum amount of notifications kept in history
+    history_length = 20
+
+    ### Misc/Advanced ###
+
+    # dmenu path.
+    #dmenu = /usr/bin/dmenu -p dunst:
+
+    # Browser for opening urls in context menu.
+    #browser = /usr/bin/xdg-open
+
+    # Always run rule-defined scripts, even if the notification is suppressed
+    always_run_script = true
+
+    # Define the title of the windows spawned by dunst
+    title = Dunst
+
+    # Define the class of the windows spawned by dunst
+    class = Dunst
+
+    # Define the corner radius of the notification window
+    # in pixel size. If the radius is 0, you have no rounded
+    # corners.
+    # The radius will be automatically lowered if it exceeds half of the
+    # notification height to avoid clipping text and/or icons.
+    corner_radius = 0
+
+    # Ignore the dbus closeNotification message.
+    # Useful to enforce the timeout set by dunst configuration. Without this
+    # parameter, an application may close the notification sent before the
+    # user defined timeout.
+    ignore_dbusclose = false
+
+    ### Wayland ###
+    # These settings are Wayland-specific. They have no effect when using X11
+
+    # Uncomment this if you want to let notications appear under fullscreen
+    # applications (default: overlay)
+    # layer = top
+
+    # Set this to true to use X11 output on Wayland.
+    force_xwayland = false
+
+    ### Legacy
+
+    # Use the Xinerama extension instead of RandR for multi-monitor support.
+    # This setting is provided for compatibility with older nVidia drivers that
+    # do not support RandR and using it on systems that support RandR is highly
+    # discouraged.
+    #
+    # By enabling this setting dunst will not be able to detect when a monitor
+    # is connected or disconnected which might break follow mode if the screen
+    # layout changes.
+    force_xinerama = false
+
+    ### mouse
+
+    # Defines list of actions for each mouse event
+    # Possible values are:
+    # * none: Don't do anything.
+    # * do_action: Invoke the action determined by the action_name rule. If there is no
+    #              such action, open the context menu.
+    # * open_url: If the notification has exactly one url, open it. If there are multiple
+    #             ones, open the context menu.
+    # * close_current: Close current notification.
+    # * close_all: Close all notifications.
+    # * context: Open context menu for the notification.
+    # * context_all: Open context menu for all notifications.
+    # These values can be strung together for each mouse event, and
+    # will be executed in sequence.
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+# Experimental features that may or may not work correctly. Do not expect them
+# to have a consistent behaviour across releases.
+[experimental]
+    # Calculate the dpi to use on a per-monitor basis.
+    # If this setting is enabled the Xft.dpi value will be ignored and instead
+    # dunst will attempt to calculate an appropriate dpi value for each monitor
+    # using the resolution and physical size. This might be useful in setups
+    # where there are multiple screens with very different dpi values.
+    per_monitor_dpi = false
+
+
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the "#" and following would be interpreted as a comment.
+    background = "#0d0e0c"
+    foreground = "#f5e0dc"
+    frame_color = "#626A6D"
+    # icon = "~/.config/dunst/icons/low.svg"
+    icon = "/home/firmanqs/Pictures/notification/notifimg.jpg"
+    timeout = 10
+    # Icon for notifications with low urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+[urgency_normal]
+    background = "#0d0e0c"
+    foreground = "#f5e0dc"
+    frame_color = "#f5e0dc"
+    # icon = "~/.config/dunst/icons/pokeball.svg"
+    icon = "/home/firmanqs/Pictures/notification/notifimg.jpg"
+    timeout = 10
+    # Icon for notifications with normal urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+[urgency_critical]
+    background = "#f5e0dc"
+    foreground = "#1e1e2e"
+    frame_color = "#f38ba8"
+    icon = "~/.config/dunst/icons/critical.svg"
+    timeout = 0
+    # Icon for notifications with critical urgency, uncomment to enable
+    #default_icon = /path/to/icon
+
+# Every section that isn't one of the above is interpreted as a rules to
+# override settings for certain messages.
+#
+# Messages can be matched by
+#    appname (discouraged, see desktop_entry)
+#    body
+#    category
+#    desktop_entry
+#    icon
+#    match_transient
+#    msg_urgency
+#    stack_tag
+#    summary
+#
+# and you can override the
+#    background
+#    foreground
+#    format
+#    frame_color
+#    fullscreen
+#    new_icon
+#    set_stack_tag
+#    set_transient
+#    set_category
+#    timeout
+#    urgency
+#    icon_position
+#    skip_display
+#    history_ignore
+#    action_name
+#    word_wrap
+#    ellipsize
+#    alignment
+#    hide_text
+#
+# Shell-like globbing will get expanded.
+#
+# Instead of the appname filter, it's recommended to use the desktop_entry filter.
+# GLib based applications export their desktop-entry name. In comparison to the appname,
+# the desktop-entry won't get localized.
+#
+# SCRIPTING
+# You can specify a script that gets run when the rule matches by
+# setting the "script" option.
+# The script will be called as follows:
+#   script appname summary body icon urgency
+# where urgency can be "LOW", "NORMAL" or "CRITICAL".
+#
+# NOTE: It might be helpful to run dunst -print in a terminal in order
+# to find fitting options for rules.
+
+# Disable the transient hint so that idle_threshold cannot be bypassed from the
+# client
+#[transient_disable]
+#    match_transient = yes
+#    set_transient = no
+#
+# Make the handling of transient notifications more strict by making them not
+# be placed in history.
+#[transient_history_ignore]
+#    match_transient = yes
+#    history_ignore = yes
+
+# fullscreen values
+# show: show the notifications, regardless if there is a fullscreen window opened
+# delay: displays the new notification, if there is no fullscreen window active
+#        If the notification is already drawn, it won't get undrawn.
+# pushback: same as delay, but when switching into fullscreen, the notification will get
+#           withdrawn from screen again and will get delayed like a new notification
+#[fullscreen_delay_everything]
+#    fullscreen = delay
+#[fullscreen_show_critical]
+#    msg_urgency = critical
+#    fullscreen = show
+
+#[espeak]
+#    summary = "*"
+#    script = dunst_espeak.sh
+
+#[script-test]
+#    summary = "*script*"
+#    script = dunst_test.sh
+
+#[ignore]
+#    # This notification will not be displayed
+#    summary = "foobar"
+#    skip_display = true
+
+#[history-ignore]
+#    # This notification will not be saved in history
+#    summary = "foobar"
+#    history_ignore = yes
+
+#[skip-display]
+#    # This notification will not be displayed, but will be included in the history
+#    summary = "foobar"
+#    skip_display = yes
+
+#[signed_on]
+#    appname = Pidgin
+#    summary = "*signed on*"
+#    urgency = low
+#
+#[signed_off]
+#    appname = Pidgin
+#    summary = *signed off*
+#    urgency = low
+#
+#[says]
+#    appname = Pidgin
+#    summary = *says*
+#    urgency = critical
+#
+#[twitter]
+#    appname = Pidgin
+#    summary = *twitter.com*
+#    urgency = normal
+#
+#[stack-volumes]
+#    appname = "some_volume_notifiers"
+#    set_stack_tag = "volume"
+#
+# vim: ft=cfg
+
+[volume-control]
+    summary = "volctl"
+    format = "<span size="250%">%a</span>\n%b"
+
+[brightness-control]
+    summary = "brightctl"
+    format = "<span size="250%">%a</span>\n%b"
+
+[theme-switch]
+    summary = "theme"
+    format = "<b>%a</b>"
+
+#+end_src
+
+* WAL (PYWAL TEMPLATE)
+** Alacritty (TOML)
+#+begin_src toml :tangle ./wal/templates/alacritty-pywal.toml
+[colors.bright]
+black = "#928374"
+blue = "#83a598"
+cyan = "#8ec07c"
+green = "#b8bb26"
+magenta = "#d3869b"
+red = "#fb4934"
+white = "#ebdbb2"
+yellow = "#fabd2f"
+
+[colors.normal]
+black = "{color0}"
+blue = "{color4}"
+cyan = "{color6}"
+green = "{color2}"
+magenta = "{color5}"
+red = "{color1}"
+white = "{color7}"
+yellow = "{color3}"
+
+[colors.primary]
+background = "{background}"
+foreground = "{foreground}"
+#+end_src
+** Window Manager Xresources Theme
+#+begin_src conf :tangle ./wal/templates/xresrouces-for-mywm
+*.normfgcolor: 		#f1f1f1
+*.normbgcolor:   	{color0}
+*.selfgcolor:   	{color0}
+*.selbgcolor:   	{color8}
+*.normbordercolor:	{color0}
+*.selbordercolor:	{color8}
+*.accentcolor:	    {color6}
+#+end_src

@@ -30,8 +30,8 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
 import XMonad.Hooks.ManageDocks (avoidStruts, docks, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
+-- import XMonad.Hooks.StatusBar
+-- import XMonad.Hooks.StatusBar.PP
 
 -- Layouts
 import XMonad.Layout.SimplestFloat
@@ -53,7 +53,7 @@ import XMonad.Layout.Spacing (smartSpacing, decWindowSpacing, incWindowSpacing, 
 
 -- Utilities
 import XMonad.Util.EZConfig (additionalKeysP, mkNamedKeymap)
-import XMonad.Util.Hacks (windowedFullscreenFixEventHook, javaHack)
+-- import XMonad.Util.Hacks (windowedFullscreenFixEventHook, javaHack)
 import XMonad.Util.NamedActions
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
@@ -65,7 +65,7 @@ myFont :: String
 myFont = "xft:JetBrainsMono Nerd Font Mono:regular:size=10:antialias=true:hinting=true"
 
 myTerminal :: String
-myTerminal = "st"    -- Sets default terminal
+myTerminal = "alacritty"    -- Sets default terminal
 
 myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
@@ -126,32 +126,32 @@ myStartupHook = do
 maximum number of windows displayed for layout. mySpacing n sets the gap size
 around the windows.
 -}
-tall     = renamed [Replace "[tall]="]
+tall     = renamed [Replace "tall"]
            $ limitWindows 5
            $ addTabs shrinkText myTabTheme
            -- $ subLayout [] (smartBorders Simplest)
            $ smartSpacing 4
            $ ResizableTall 1 (3/100) (1/2) []
-monocle  = renamed [Replace "[mono]"]
+monocle  = renamed [Replace "monocle"]
            $ addTabs shrinkText myTabTheme
            -- $ subLayout [] (smartBorders Simplest)
            $ Full
-floats   = renamed [Replace "<F><"]
+floats   = renamed [Replace "floats"]
            $ simplestFloat
-thrColMagn = renamed [Replace "|magn]|"]
+thrColMagn = renamed [Replace "3ColMagn"]
            $ magnifiercz 1.3
            $ limitWindows 7
            $ addTabs shrinkText myTabTheme
            -- $ subLayout [] (smartBorders Simplest)
            $ ThreeCol 1 (3/100) (1/2)
-thrRowMagn = renamed [Replace "=Magn="]
+thrRowMagn = renamed [Replace "3RowMagn"]
            $ magnifiercz 1.3
            $ limitWindows 7
            $ addTabs shrinkText myTabTheme
            -- $ subLayout [] (smartBorders Simplest)
            $ Mirror
            $ ThreeCol 1 (3/100) (1/2)
-tabs     = renamed [Replace "_tabs_"]
+tabs     = renamed [Replace "tabs"]
            $ tabbed shrinkText myTabTheme
 
 -- The layout hook
@@ -171,8 +171,9 @@ myLayoutHook = avoidStruts
                     ||| noBorders monocle
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", " 10 "]
-myWorkspaces = ["main", "int", "str", "arr", "imp", "type", "mus", "vid", "func", "utl"]
+myWorkspaces = ["Main", "Int", "Str", "Arr", "Imp", "Type", "Mus", "Vid", "Func", "Utl"]
 -- myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+-- myWorkspaces = ["一", "二", "三", "四", "五", "六", "7七", "八", "九", "十"]
 -- myWorkspaces =
 --         " 1 : <fn=2>\xf111</fn> " :
 --         " 2 : <fn=2>\xf1db</fn> " :
@@ -448,7 +449,8 @@ main = do
   xmonad $ addDescrKeys' ((mod4Mask, xK_F1), showKeybindings) myKeys $ ewmh $ docks $ def
     { manageHook         = myManageHook <+> manageDocks
     -- , handleEventHook    = windowedFullscreenFixEventHook <> swallowEventHook (className =? "Alacritty"  <||> className =? "st-256color" <||> className =? "XTerm") (return True) <> trayerPaddingXmobarEventHook
-    , handleEventHook    = windowedFullscreenFixEventHook
+    -- , handleEventHook    = windowedFullscreenFixEventHook
+    , handleEventHook    = fullscreenEventHook
     , modMask            = myModMask
     , terminal           = myTerminal
     , startupHook        = myStartupHook
@@ -465,12 +467,11 @@ main = do
         , ppVisible = xmobarColor selfgcolor "" . clickable
           -- Hidden workspace
         -- , ppHidden = xmobarColor selbgcolor "" . wrap "*" "" . clickable
-        , ppHidden = xmobarColor accentcolor "" . wrap "~" "" . clickable
+        , ppHidden = xmobarColor accentcolor "" . wrap "*" "" . clickable
           -- Hidden workspaces (no windows)
         -- , ppHiddenNoWindows = xmobarColor selbgcolor "" . clickable
-        -- , ppHiddenNoWindows = xmobarColor selbgcolor "" . clickable
           -- Title of active window
-        , ppTitle = xmobarColor normfgcolor "" . shorten 60
+        , ppTitle = xmobarColor normfgcolor "" . wrap " " "" . shorten 60
           -- Separator character
         , ppSep =  "<fc=" ++ sepcolor ++ "> <fn=1>|</fn> </fc>"
           -- Urgent workspace

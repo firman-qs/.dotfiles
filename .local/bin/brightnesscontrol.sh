@@ -2,7 +2,7 @@
 
 readarray -t colors < /home/firmanqs/.cache/wal/colors
 
-ncolor="-h string:bgcolor:${colors[0]} -h string:fgcolor:${colors[7]} -h string:frcolor:${colors[7]}"
+ncolor="-h string:bgcolor:${colors[0]} -h string:fgcolor:${colors[7]} -h string:frcolor:${colors[8]}"
 
 function send_notification {
   brightness=`brightnessctl info | grep -oP "(?<=\()\d+(?=%)" | cat`
@@ -24,10 +24,10 @@ function send_notification {
 function get_brightness {
   brightnessctl -m | grep -o '[0-9]\+%' | head -c-2
 }
-
 case $1 in
 i)
   # increase the backlight by 5%
+  echo "here"
   brightnessctl set +5%
   send_notification
   ;;

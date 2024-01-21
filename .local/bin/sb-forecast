@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # this is personal files, contain my city & district
-source "/home/fqs/.fqs-secrets.sh"
+source "/home/firmanqs/.fqs-secrets.sh"
 
 # Displays today's precipication chance (☔), and daily low (🥶) and high (🌞).
 # Usually intended for the statusbar.

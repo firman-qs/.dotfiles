@@ -1,3 +1,16 @@
 .vscode
 *.rej
 *.bak
+*.~undo-tree~
+.local/bin/black
+.local/bin/blackd
+.local/bin/f2py
+.local/bin/fonttools
+.local/bin/pyftmerge
+.local/bin/pyftsubset
+.local/bin/ttx
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+.xmonad/xmonad.o
+.config/dmscripts/__pycache__/config.cpython-310.pyc
+xmonad-x86_64-linux

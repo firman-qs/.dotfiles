@@ -39,7 +39,7 @@ main() {
     weather_opts+=''
 
     # Curl wttr.in, a CLI weather app.
-    curl -s "https://wttr.in/${_location// /%20}?T&${weather_opts}" | yad --text-info --geometry=1300x750 --tile --fontname='Iosevka 12'
+    curl -s "https://wttr.in/${_location// /%20}?T&${weather_opts}" | yad --text-info --geometry=1300x750 --tile --fontname='JetBrainsMono Nerd Font 12'
 }
 
 noOpt=1

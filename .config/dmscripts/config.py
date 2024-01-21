@@ -14,5 +14,5 @@ def dmenu(prompt):
              "-p", prompt]
     return dmenu_conf
 
-BACKGROUND_DIRERCTORY = "/home/fqs/Pictures/wallpapers"
+BACKGROUND_DIRERCTORY = "/home/firmanqs/Pictures/wallpapers"
 

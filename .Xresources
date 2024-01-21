@@ -218,8 +218,8 @@
 ! Generated with :
 ! XRDB2Xreources.py
 !
-*.foreground:  #f1f1f1
-*.background:  #000000
+! *.foreground:  #f1f1f1
+! *.background:  #000000
 ! *.cursorColor: #808080
 ! !
 ! ! Black
@@ -266,4 +266,57 @@
 ! *.selbordercolor:	#626A6D
 
 #include ".cache/wal/xresrouces-for-mywm"
-#include ".cache/wal/colors.Xresources"
+! #include ".cache/wal/colors.Xresources"
+
+!! URXVY CONF (NON COLOR)
+Xft.dpi:    96
+Xft.antialias:  1
+Xft.hinting:    1
+Xft.hintstyle:  hintmedium
+
+URxvt.termName: yourxvt
+URxvt.transparent: false
+URxvt.font: xft:Iosevka Nerd Font:size=18
+URxvt.scrollBar: false
+URxvt.keysym.C-minus:  resize-font:smaller
+URxvt.keysym.C-equal:  resize-font:bigger
+URxvt.keysym.C-0:      resize-font:reset
+
+!! One Dark
+! FOR ALL OTHER PROGRAMS USE XRESOURCES
+! This includes xterm and urxvt
+! *.foreground:   #bbc2cf
+! *.background:   #282c34
+! *.cursorColor:  #bbc2cf
+!
+! ! black
+! *.color0:       #1c1f24
+! *.color8:       #5b6268
+!
+! ! red
+! *.color1:       #ff6c6b
+! *.color9:       #da8548
+!
+! ! green
+! *.color2:       #98be65
+! *.color10:      #4db5bd
+!
+! ! yellow
+! *.color3:       #da8548
+! *.color11:      #ecbe7b
+!
+! ! blue
+! *.color4:       #51afef
+! *.color12:      #3071db
+!
+! ! magenta
+! *.color5:       #c678dd
+! *.color13:      #a9a1e1
+!
+! ! cyan
+! *.color6:       #5699af
+! *.color14:      #46d9ff
+!
+! ! white
+! *.color7:       #abb2bf
+! *.color15:      #dfdfdf

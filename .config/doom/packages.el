@@ -50,4 +50,6 @@
 ;; (unpin! t)
 (package! gruber-darker-theme)
 (package! org-auto-tangle)
-(package! spacemacs-theme)
+(package! catppuccin-theme)
+(package! lsp-pyright)
+(package! org-transclusion)

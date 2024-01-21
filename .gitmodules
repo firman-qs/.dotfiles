@@ -10,3 +10,6 @@
 [submodule ".config/suckless/st"]
 	path = .config/suckless/st
 	url = git@github.com:firman-qs/st-simple-terminal-fqs.git
+[submodule ".config/doom/extra-packages/php-extras"]
+	path = .config/doom/extra-packages/php-extras
+	url = https://github.com/arnested/php-extras.git
