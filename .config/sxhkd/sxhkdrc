@@ -23,6 +23,9 @@ super + e
 super + x
 	dm-logout
 
+super + s
+	flameshot gui
+
 # quit/restart bspwm
 super + shift + {q,F5}
 	bspc {quit,wm -r}
@@ -150,7 +153,7 @@ super + {Left,Down,Up,Right}
 
 # launch qutebrowser
 super + b
-    microsoft-edge
+	firefox
 
 # dmscripts (SUPER + p followed by another key)
 super + p; h
@@ -175,8 +178,8 @@ super + p; {n}
     dm-note
 super + p; {o}
     dm-bookman
-super + p; p
-    passmenu -p Pass:
+# super + p; p
+    # passmenu -p Pass:
 super + p; {q}
     dm-logout
 super + p; {r}
@@ -185,8 +188,12 @@ super + p; {s}
     dm-websearch
 super + p; {t}
     dm-translate
+super + p; {p}
+    gpick -s
 
 # emacs (SUPER + e followed by another key)
+super + c; c
+    code
 super + c; e
     emacsclient -c -a 'emacs'
 super + c; a

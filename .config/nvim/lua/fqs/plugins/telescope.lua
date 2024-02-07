@@ -1,35 +1,41 @@
 return {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = {
-        "nvim-lua/plenary.nvim",
-        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-        local telescope = require("telescope")
-        local actions = require("telescope.actions")
+   "nvim-telescope/telescope.nvim",
+   branch = "0.1.x",
+   dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-tree/nvim-web-devicons",
+   },
+   config = function()
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
+      local wk = require("which-key")
 
-        telescope.setup({
-            defaults = {
-                path_display = { "truncate " },
-                mappings = {
-                    i = {
-                        ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-                        ["<C-j>"] = actions.move_selection_next, -- move to next result
-                        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
-                    },
-                },
+      telescope.setup({
+         defaults = {
+            path_display = { "truncate " },
+            mappings = {
+               i = {
+                  ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+                  ["<C-j>"] = actions.move_selection_next, -- move to next result
+                  ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+               },
             },
-        })
+         },
+      })
 
-        telescope.load_extension("fzf")
+      telescope.load_extension("fzf")
 
-        -- set keymaps
-        local keymap = vim.keymap
-        keymap.set("n", "<leader>pf", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-        keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-        keymap.set("n", "<leader>ps", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-        keymap.set("n", "<leader>pc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-    end,
+      -- set keymaps
+      wk.register({
+         p = {
+            name = "Project", -- optional group name
+            f = { "<cmd>Telescope find_files<cr>", "Fuzzy find files in cwd" }, -- create a binding with label
+            r = { "<cmd>Telescope oldfiles<cr>", "Fuzzy find recent files" }, -- create a binding with label
+            s = { "<cmd>Telescope live_grep<cr>", "Find string in cwd" }, -- create a binding with label
+            b = { "<cmd>Telescope buffers<cr>", "Find Buffers" }, -- create a binding with label
+            c = { "<cmd>Telescope grep_string<cr>", "Find string under cursor in cwd" }, -- create a binding with label
+         },
+      }, { prefix = "<leader>" }, { mode = "n" })
+   end,
 }

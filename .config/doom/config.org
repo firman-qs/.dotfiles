@@ -115,8 +115,9 @@
 ;; (setq doom-theme 'doom-miramare)
 ;; (setq doom-theme 'doom-sourcerer)
 ;; (setq doom-theme 'nord)
+(setq doom-theme 'doom-gruvbox)
 ;; (setq doom-theme 'everforest-hard-dark)
-(setq doom-theme 'doom-material)
+;; (setq doom-theme 'doom-material)
 ;; (setq catppuccin-flavor 'mocha)
 #+end_src
 

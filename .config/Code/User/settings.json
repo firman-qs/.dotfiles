@@ -3,7 +3,7 @@
     "python.formatting.provider": "none",
     "notebook.compactView": false,
     "files.autoSave": "onFocusChange",
-    "editor.fontFamily": "'Iosevka Nerd Font','JetBrainsMono Nerd Font','CaskaydiaCove Nerd Font','JetBrainsMono NF','CaskaydiaCove Nerd Font'",
+    "editor.fontFamily": "'JetBrainsMono Nerd Font','Iosevka Nerd Font','CaskaydiaCove Nerd Font','JetBrainsMono NF','CaskaydiaCove Nerd Font'",
     "editor.fontSize": 16,
     "editor.lineHeight": 1.7,
     "editor.rulers": [80,120],
@@ -12,37 +12,80 @@
     "jupyter.themeMatplotlibPlots": false,
     "vim.handleKeys": {
         "<C-d>": true,
+        "<space>": true,
+        "<Esc>": true,
         "<C-p>": false,
+        "<C-g>": false,
         "<C-s>": false,
+        "<C-r>": true,
         "<C-w>": false,
+        "<A-h>": false,
+        "<A-l>": false,
+        "<A-u>": true,
+        "<C-h>": false,
+        "<C-j>": true,
         "<C-k>": false,
+        "<C-m>": false,
         "<C-n>": false,
         "<C-x>": false,
+        "<C-o>": true,
         "<C-c>": false,
+        "<C-e>": true,
+        "<C-f>": false,
         "<C-y>": false,
         "<C-z>": false
     },
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "i", "i"],
+            "commands": ["super-figure.editVector"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [ "C-e" ],
+            "after": [ "$" ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                "j"
-            ],
-            "after": [
-                "g",
-                "j"
-            ]
+            "before": [ "C-e" ],
+            "after": [ "$" ]
         },
         {
-            "before": [
-                "k"
-            ],
-            "after": [
-                "g",
-                "k"
-            ]
+            "before": [ "j" ],
+            "after": [ "g", "j" ]
+        },
+        {
+            "before": [ "k" ],
+            "after": [ "g", "k" ]
+        },
+        {
+            "before": ["<leader>", "p", "f"],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "p", "s"],
+            "commands": ["workbench.action.findInFiles"]
+        },
+        {
+            "before": ["<leader>", "."],
+            "commands": ["workbench.action.quickOpen"]
+        },
+        {
+            "before": ["<leader>", "b", "k"],
+            "commands": ["workbench.action.closeActiveEditor"]
+        },
+        {
+            "before": ["<leader>", "<leader>"],
+            "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"]
+        },
+        {
+            "before": ["<leader>", "f", "s"],
+            "commands": ["workbench.action.files.save"]
         },
     ],
-    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.insert": "block",
     "workbench.startupEditor": "none",
     "git.autofetch": true,
     "git.enableSmartCommit": true,
@@ -73,9 +116,9 @@
     "latex-workshop.view.pdf.color.dark.backgroundColor": "//#282a34",
     
     "vim.camelCaseMotion.enable": true,
-    "vim.enableNeovim": true,
+    "vim.enableNeovim": false,
     "vim.highlightedyank.enable": true,
-    "vim.neovimUseConfigFile": true,
+    "vim.neovimUseConfigFile": false,
     "editor.minimap.autohide": true,
     "editor.minimap.scale": 3,
     "editor.minimap.renderCharacters": false,
@@ -94,9 +137,7 @@
     "terminal.integrated.tabs.enableAnimation": false,
     "editor.cursorBlinking": "solid",
     "workbench.reduceMotion": "on",
-    "terminal.integrated.fontSize": 22,
     "window.commandCenter": false,
-    "window.menuBarVisibility": "toggle",
     "caps-lock-state.status_bar_text": "🔒 Caps Lock ON!A",
     "latex-workshop.bibtex-format.tab": "4 spaces",
     "notebook.output.fontFamily": "Iosevka Nerd Font",
@@ -111,5 +152,18 @@
     "zenMode.hideLineNumbers": false,
     "zenMode.centerLayout": false,
     "editor.wordWrap": "on",
-    "editor.wordWrapColumn": 100
+    "editor.wordWrapColumn": 100,
+    "terminal.integrated.fontSize": 16,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "super-figure.vectorFigureEditor": "/usr/bin/inkscape",
+    "editor.tabCompletion": "on",
+    "vim.leader": "space",
+    "vim.sneakUseIgnorecaseAndSmartcase": true,
+    "vim.sneak": true,
+    "super-figure.bitmapFigureEditor": "/usr/bin/gimp",
+    "window.menuBarVisibility": "toggle",
+    "editor.scrollbar.vertical": "visible",
+    "workbench.activityBar.location": "hidden",
 }

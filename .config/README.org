@@ -54,7 +54,6 @@ Other things you need to use this configuration, besides bspwm, are:
 - [[https://github.com/albertored11/bsptab][bsptab]],
 - [[https://github.com/polybar/polybar][polybar]],
 - and [[https://tools.suckless.org/tabbed/][tabbed]].
-#+transclude: [[./bspwm/bspwmrc][bspwmrc]]  :src bash
 ** DWM
 I applied quite a lot of patches (I think) in [[https://github.com/firman-qs/dwm-fqs][dwm on these dotfiles]]. Ironically, some of them I don't really use haha 😂 ..., like scratchpads and some additional layouts brought by the [[https://dwm.suckless.org/patches/vanitygaps/dwm-cfacts-vanitygaps-6.4_combo.diff][dwm-cfacts-vanitygaps-6.4_combo patch]]. However, this might be useful for you. You can see the patches applied to my dwm configuration in the [[https://github.com/firman-qs/dwm-fqs/tree/a2c042b92be867dc8c50793601affdd9a917ced9/patches][.dotfiles/.config/suckless/dwm/patches]] folder.
 *** List of dwm Patches
@@ -108,23 +107,18 @@ yay -S i3 i3status
 After that, make sure you have moved the [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3][i3]] and [[https://github.com/firman-qs/.dotfiles/tree/main/.config/i3status][i3status]] in dotfiles to the appropriate place or use [[https://www.gnu.org/software/stow/][GNU Stow]] as in [[https://github.com/firman-qs/.dotfiles/?tab=readme-ov-file#what-is-this][WHAT IS THIS?]].
 
 *** i3 WM
-#+transclude: [[./i3/config][i3config]]  :src conf
 *** i3Status
 i3status configuration file. see "man i3status" for documentation. It is important that this file is edited as UTF-8. The following line should contain a sharp s: ß If the above line is not correctly displayed, fix your editor first!
-#+transclude: [[./i3status/config][i3status]]  :src conf
 ** xmonad
 (TODO)
 *Look at:* [[https://github.com/firman-qs/.dotfiles/tree/main/.xmonad][github.com/firman-qs/.dotfiles/tree/main/.xmonad]]
 * TERMINALS
 ** Alacritty
 My main terminal, configured in =.toml=.
-#+transclude: [[./alacritty/alacritty.toml][alacritty.toml]]  :src toml
 ** ST
 Look at
 [[https://github.com/firman-qs/st-simple-terminal-fqs][github.com/firman-qs/st-simple-terminal-fqs]]
 * POLYBAR
-#+transclude: [[./polybar/config.ini][polybar config]] :src conf
-
 * PICOM
 #+begin_src conf :tangle ./picom/picom.conf
 ##############################################################################
@@ -689,6 +683,43 @@ set statusbar-v-padding 0
 set show-scrollbars     false
 #+end_src
 ** Zathura Theme
+*** Everforest
+#+begin_src conf :tangle ./zathura/zathurarc
+# https://github.com/jef/everforest-xresources
+# Huge thanks to u/demusxd for making this config! (i just recolored everything to everforest :P)
+set default-bg                  "#4b565c"
+set default-fg                  "#d3c6aa"
+
+set statusbar-fg                "#d3c6aa"
+set statusbar-bg                "#2b3339"
+
+set inputbar-bg                 "#2b3339"
+set inputbar-fg                 "#d3c6aa"
+
+set notification-bg             "#2b3339"
+set notification-fg             "#d3c6aa"
+
+set notification-error-bg       "#2b3339"
+set notification-error-fg       "#d3c6aa"
+
+set notification-warning-bg     "#2b3339"
+set notification-warning-fg     "#d3c6aa"
+
+set highlight-color             "#4b565c"
+set highlight-active-color      "#e67e80"
+
+set completion-bg               "#2b3339"
+set completion-fg               "#d3c6aa"
+
+set completion-highlight-fg     "#4b565c"
+set completion-highlight-bg     "#2b3339"
+
+set recolor-lightcolor          "#2b3339"
+set recolor-darkcolor           "#d3c6aa"
+
+set recolor                     "true"
+set recolor-keephue             "false"
+#+end_src
 *** Nord
 #+begin_src conf :tangle no
 # config source https://github.com/nordtheme/nord/issues/143
@@ -757,7 +788,7 @@ set show-scrollbars     false
 # set recolor-darkcolor           "#e0def4"
 #+end_src
 *** Gruvbox + ir black background
-#+begin_src conf :tangle ./zathura/zathurarc
+#+begin_src conf :tangle no
 # GRUVBOX FOREGROUND WITH IR BLACK BACKGROUND
 # ------------------------------------------
 set default-bg              "#000000" # IR Black Background
@@ -896,7 +927,7 @@ super + Escape
 
 # terminal emulator
 super + Return
-	alacritty
+	wezterm
 
 # run program launcher
 super + d
@@ -2259,7 +2290,7 @@ See dunst(5) for all configuration options
     frame_width = 2
 
     # Defines color of the frame around the notification window.
-    frame_color = "#626A6D"
+    frame_color = "#543A48"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -2478,9 +2509,9 @@ See dunst(5) for all configuration options
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#0d0e0c"
-    foreground = "#f5e0dc"
-    frame_color = "#626A6D"
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    frame_color = "#272e33"
     # icon = "~/.config/dunst/icons/low.svg"
     icon = "/home/firmanqs/Pictures/notification/notifimg.jpg"
     timeout = 10
@@ -2488,9 +2519,9 @@ See dunst(5) for all configuration options
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#0d0e0c"
-    foreground = "#f5e0dc"
-    frame_color = "#f5e0dc"
+    background = "#1e2326"
+    foreground = "#d3c6aa"
+    frame_color = "#543A48"
     # icon = "~/.config/dunst/icons/pokeball.svg"
     icon = "/home/firmanqs/Pictures/notification/notifimg.jpg"
     timeout = 10
@@ -2498,8 +2529,8 @@ See dunst(5) for all configuration options
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#f5e0dc"
-    foreground = "#1e1e2e"
+    background = "#1e2326"
+    foreground = "#d3c6aa"
     frame_color = "#f38ba8"
     icon = "~/.config/dunst/icons/critical.svg"
     timeout = 0

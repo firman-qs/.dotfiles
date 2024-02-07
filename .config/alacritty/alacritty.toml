@@ -1,13 +1,33 @@
 # import = ["/home/firmanqs/.cache/wal/alacritty-pywal.toml"]
 [colors.primary]
-background = "#000000"
-foreground = "#bbc2cf"
+background = '#1f1f28'
+foreground = '#dcd7ba'
+
+[colors.normal]
+black   = '#090618'
+red     = '#c34043'
+green   = '#76946a'
+yellow  = '#c0a36e'
+blue    = '#282828'
+magenta = '#957fb8'
+cyan    = '#6a9589'
+white   = '#c8c093'
+
+[colors.bright]
+black   = '#6a9589'
+red     = '#c34043'
+green   = '#76946a'
+yellow  = '#c0a36e'
+blue    = '#6a9589'
+magenta = '#957fb8'
+cyan    = '#6a9589'
+white   = '#c8c093'
 
 [font]
-size = 13.0
+size = 11.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 
 [window]
-opacity = 0.8
+opacity = 0.9

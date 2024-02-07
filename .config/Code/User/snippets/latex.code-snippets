@@ -1,0 +1,110 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"latex book": {
+	 	"scope": "latex",
+		"prefix": "latex book",
+		"body": [
+			"\\documentclass[${1:12pt}]{book}\n",
+			"\\title{${2:Put Your Book Title}}",
+			"\\author{${3:Author Name}}",
+			"\\date{\\today}\n",
+			"\\begin{document}",
+			"\\maketitle",
+			"$0",
+			"\\end{document}"
+		],
+		"description": "latex book basic structure"
+	},
+	"integral": {
+	 	"scope": "latex",
+		"prefix": "integral",
+		"body": [
+			"\int_{${1:lower limit}}^{${2:upper limit}}${3:integrand} "
+			"$0"
+		],
+		"description": "Insert Integral"
+	},
+	"times new roman": {
+	 	"scope": "latex, python",
+		"prefix": "setup times new roman",
+		"body": [
+			"\\usepackage{tgtermes}",
+			"\\renewcommand{\\sfdefault}{ptm}",
+			"$0"
+		],
+		"description": "times new roman like"
+	},
+	"insert figure": {
+	 	"scope": "latex, python",
+		"prefix": "\\beginfigure",
+		"body": [
+			"\\begin{figure}[h]",
+				"\t\\centering",
+				"\t\\includegraphics[width=${1:0.x of}\\textwidth]{${2:imageFilePath}}",
+				"\t\\caption{${3:Here is some image}}",
+				"\t\\label{fig:$4}",
+			"\\end{figure}",
+			"$0"
+		],
+		"description": "insert regular figure"
+	},
+	"insert inkscape figure": {
+	 	"scope": "latex, python",
+		"prefix": "\\begininfigure",
+		"body": [
+			"\\begin{figure}[h]",
+				"\t\\centering",
+				"\t\\incsvg{${1:directory}}{${2:imageFileName}}",
+				"\t\\caption{${3:Here is some image}}",
+				"\t\\label{fig:$4}",
+			"\\end{figure}",
+			"$0"
+		],
+		"description": "inkscape generated figure"
+	},
+	"insert inkscape tikzpicture": {
+	 	"scope": "latex, python",
+		"prefix": "\\beginintikzpicture",
+		"body": [
+			"\\begin{center}"
+			"\\captionsetup{type=figure}",
+				"\t\\begin{tikzpicture}",
+					"\t\t\\draw (0, 0) node[inner sep=0] {\\incsvg{${1:directory}}{${2:imageFileName}}};",
+					"\t\t\\draw (1, 1) node {${3:insert your text here}};",
+				"\t\\end{tikzpicture}",
+				"\t\\captionof{figure}{Figure with annotation}",
+				"\t\\label{fig:$4}",
+			"\\end{center}",
+			"$0"
+		],
+		"description": "inkscape generated figure with text"
+	},
+	"setup for inkscape-latex": {
+	 	"scope": "latex, python",
+		"prefix": "setup inkscape",
+		"body": [
+			"\\usepackage{caption}",
+			"\\usepackage{tikz}",
+			"\\newcommand{\\incsvg}[2]{%",
+				"\t\\def\\svgwidth{0.9\\columnwidth}",
+				"\t\\graphicspath{{#1}}",
+				"\t\\input{#2.pdf_tex}",
+			"}",
+			"$0"
+		],
+		"description": "Log output to console"
+	}
+}
