@@ -35,7 +35,7 @@ tztime local {
 }
 
 load {
-        format = "Hot Loads: %1min"
+        format = "Loads: %1min"
 }
 
 disk "/" {

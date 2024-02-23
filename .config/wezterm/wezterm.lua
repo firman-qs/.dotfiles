@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local keybinding = require("keybinding")
 local config = {}
 
-config.color_scheme = "Dark+"
+config.color_scheme = "Modus-Vivendi-Deuteranopia"
 config.font = wezterm.font_with_fallback({
    "JetBrainsMono Nerd Font",
 })
@@ -86,7 +86,7 @@ config.colors = {
    },
 }
 
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.95
 
 config.window_padding = {
    left = 0,

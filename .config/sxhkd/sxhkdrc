@@ -9,7 +9,7 @@ super + Escape
 
 # terminal emulator
 super + Return
-	alacritty
+	wezterm
 
 # run program launcher
 super + d

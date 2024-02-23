@@ -29,7 +29,7 @@ include /etc/sway/config-vars.d/*
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-exec swaybg -i Pictures/wallpapers/wallhaven-y87d8x.jpg
+exec swaybg -i Pictures/wallpapers/wallhaven-8xqqq1.jpg
 #
 # Example configuration:
 #
@@ -88,6 +88,7 @@ exec swaybg -i Pictures/wallpapers/wallhaven-y87d8x.jpg
     floating_modifier $mod normal
 
     # Reload the configuration file
+    bindsym $mod+Shift+$alt+F5 restart
     bindsym $mod+Shift+F5 reload
 
     # Exit sway (logs you out of your Wayland session)
@@ -217,9 +218,8 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
-	status_command i3status
-	tray_output primary
+    swaybar_command waybar
+	position top
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done

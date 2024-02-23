@@ -147,7 +147,6 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.wrapTabs": true,
     "terminal.integrated.tabStopWidth": 4,
-    "editor.lineNumbers": "relative",
     "glassit-linux.opacity": 100,
     "zenMode.hideLineNumbers": false,
     "zenMode.centerLayout": false,
@@ -165,5 +164,6 @@
     "super-figure.bitmapFigureEditor": "/usr/bin/gimp",
     "window.menuBarVisibility": "toggle",
     "editor.scrollbar.vertical": "visible",
+    "workbench.colorTheme": "Noctis",
     "workbench.activityBar.location": "hidden",
 }
