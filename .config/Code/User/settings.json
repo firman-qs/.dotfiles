@@ -164,6 +164,17 @@
     "super-figure.bitmapFigureEditor": "/usr/bin/gimp",
     "window.menuBarVisibility": "toggle",
     "editor.scrollbar.vertical": "visible",
-    "workbench.colorTheme": "Noctis",
+    "workbench.layoutControl.enabled": false,
+    "MATLAB.telemetry": false,
+    "MATLAB.installPath": "/usr/local/MATLAB/R2018b/",
+    "matlab.mlintpath": "/usr/local/MATLAB/R2018b/bin/glnxa64/mlint",
+    "matlab.matlabpath": "/usr/local/MATLAB/R2018b/bin/matlab",
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.commandsToSkipShell": [
+        "matlab.interrupt"
+    ],
+    "MATLAB.matlabConnectionTiming": "onDemand",
+    "editor.defaultFormatter": "AffenWiesel.matlab-formatter",
     "workbench.activityBar.location": "hidden",
 }

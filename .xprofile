@@ -1,12 +1,12 @@
 #!/bin/bash
 # lxsession &
-picom &
-dunst &
-nitrogen --restore &
+# picom &
+# dunst &
+# nitrogen --restore &
 
 # wal -R &&
 # xdotool key Super+Shift+F5 &
 # xset dpms 0 0 10800 &
 # xss-lock -- slock &
 setxkbmap -layout us -option ctrl:swapcaps &
-xrdb merge ~/.Xresources &
+# xrdb merge ~/.Xresources &

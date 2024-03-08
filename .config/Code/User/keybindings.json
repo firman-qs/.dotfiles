@@ -2907,7 +2907,8 @@
     },
     {
         "key": "alt+s",
-        "command": "workbench.action.files.save"
+        "command": "workbench.action.files.save",
+        "when": "editorFocus"
     },
     {
         "key": "ctrl+shift+s",
@@ -4611,6 +4612,21 @@
     {
         "key": "alt+a",
         "command": "workbench.action.toggleActivityBarVisibility"
+    },
+    {
+        "key": "alt+s",
+        "command": "latex-workshop.build",
+        "when": "!config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "-latex-workshop.build",
+        "when": "!config.latex-workshop.bind.altKeymap.enabled && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+    },
+    {
+        "key": "alt+s",
+        "command": "matlab-in-vscode.runMatlabFile",
+        "when": "editorTextFocus && editorLangId == 'matlab'"
     }
 ]
 // Here are other available commands: 

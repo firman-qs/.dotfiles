@@ -2,12 +2,13 @@ local wezterm = require("wezterm")
 local keybinding = require("keybinding")
 local config = {}
 
-config.color_scheme = "Modus-Vivendi-Deuteranopia"
+config.color_scheme = "One Dark (Gogh)"
 config.font = wezterm.font_with_fallback({
+   -- "Iosevka Nerd Font",
    "JetBrainsMono Nerd Font",
 })
 config.line_height = 1.1
-config.font_size = 12.0
+config.font_size = 11.0
 
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
@@ -86,12 +87,12 @@ config.colors = {
    },
 }
 
-config.window_background_opacity = 0.95
+config.window_background_opacity = 1.0
 
 config.window_padding = {
-   left = 0,
-   right = 0,
-   top = 0,
+   left = 12,
+   right = 10,
+   top = 10,
    bottom = "0cell",
 }
 

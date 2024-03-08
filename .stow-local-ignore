@@ -28,3 +28,8 @@ _darcs
 ^/COPYING
 
 #\.config/doom
+\.config/alacritty
+\.config/bspwm
+\.config/dunst
+\.config/neofetch
+\.config/rofi

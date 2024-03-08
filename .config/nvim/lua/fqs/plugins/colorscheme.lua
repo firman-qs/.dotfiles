@@ -1,10 +1,15 @@
--- return {
---    "olimorris/onedarkpro.nvim",
---    priority = 1000, -- Ensure it loads first
---    config = function()
---       vim.cmd([[colorscheme onedark]])
---    end,
--- }
+return {
+   "olimorris/onedarkpro.nvim",
+   priority = 1000, -- Ensure it loads first
+   config = function()
+      require("onedarkpro").setup({
+         options = {
+            transparency = true,
+         },
+      })
+      vim.cmd([[colorscheme onedark]])
+   end,
+}
 
 -- return {
 --    "ellisonleao/gruvbox.nvim",
@@ -35,20 +40,20 @@
 --    end,
 -- }
 
-return {
-   "thimc/gruber-darker.nvim",
-   version = false,
-   lazy = false,
-   priority = 1000, -- make sure to load this before all the other start plugins
-   -- Optional; default configuration will be used if setup isn't called.
-   config = function()
-      require("gruber-darker").setup({
-         -- Your config here
-         transparent = true, -- removes the background
-      })
-      vim.cmd([[colorscheme gruber-darker]])
-   end,
-}
+-- return {
+--    "thimc/gruber-darker.nvim",
+--    version = false,
+--    lazy = false,
+--    priority = 1000, -- make sure to load this before all the other start plugins
+--    -- Optional; default configuration will be used if setup isn't called.
+--    config = function()
+--       require("gruber-darker").setup({
+--          -- Your config here
+--          transparent = true, -- removes the background
+--       })
+--       vim.cmd([[colorscheme gruber-darker]])
+--    end,
+-- }
 
 -- return {
 --    "rebelot/kanagawa.nvim",
