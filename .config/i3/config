@@ -24,17 +24,25 @@ exec --no-startup-id dex --autostart --environment i3
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+exec --no-startup-id picom --config ~/.xmonad/picom.conf -b
+exec --no-startup-id setxkbmap -layout us -option ctrl:swapcaps
+exec --no-startup-id bash ~/.fehbg
 # exec --no-startup-id pasystray
 # exec --no-startup-id /usr/bin/emacs --daemon &
 
 # # FKeys
 # # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id volumecontrol.sh -o i
-bindsym XF86AudioLowerVolume exec --no-startup-id volumecontrol.sh -o d
-bindsym XF86AudioMute exec --no-startup-id volumecontrol.sh -o m
+# bindsym XF86AudioRaiseVolume exec --no-startup-id volumecontrol.sh -o i
+# bindsym XF86AudioLowerVolume exec --no-startup-id volumecontrol.sh -o d
+# bindsym XF86AudioMute exec --no-startup-id volumecontrol.sh -o m
+# if using archcraft conf
+bindsym XF86AudioRaiseVolume exec --no-startup-id /home/firmanqs/.config/bspwm/scripts/bspvolume --inc
+bindsym XF86AudioLowerVolume exec --no-startup-id /home/firmanqs/.config/bspwm/scripts/bspvolume --dec
+bindsym XF86AudioMute exec --no-startup-id  /home/firmanqs/.config/bspwm/scripts/bspvolume --toggle
+
 # # # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightnesscontrol.sh i # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightnesscontrol.sh d # decrease screen brightness
+bindsym XF86MonBrightnessUp exec /home/firmanqs/.config/bspwm/scripts/bspbrightness --inc
+bindsym XF86MonBrightnessDown exec /home/firmanqs/.config/bspwm/scripts/bspbrightness --dec
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -50,7 +58,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dm_run.py
+# bindsym $mod+d exec --no-startup-id dm_run.py
+bindsym $mod+d exec --no-startup-id /home/firmanqs/.config/bspwm/scripts/rofi_launcher
 # change focus
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -85,10 +94,10 @@ bindsym $mod+e exec thunar
 bindsym $mod+b exec firefox
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -182,7 +191,9 @@ mode "code" {
 }
 mode "prompt" {
 		bindsym b exec dm_setbg.py; mode "default"
-		bindsym p exec gpick -s; mode "default"
+		# bindsym p exec gpick -s; mode "default"
+		bindsym p exec /home/firmanqs/.config/bspwm/scripts/bspcolorpicker; mode "default"
+		bindsym x exec /home/firmanqs/.config/bspwm/scripts/rofi_powermenu; mode "default"
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -207,10 +218,10 @@ bar {
 # Define colors variables:
 
 # Enable/disable caps mode
-mode "caps" {
-        bindsym Caps_Lock mode "default"
-}
-bindsym Caps_Lock mode "caps"
+# mode "caps" {
+#         bindsym Caps_Lock mode "default"
+# }
+# bindsym Caps_Lock mode "caps"
 
 # Enable/disable numeric keyboard
 mode "num" {

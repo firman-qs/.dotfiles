@@ -1,7 +1,6 @@
 {
     "editor.mouseWheelZoom": true,
     "python.formatting.provider": "none",
-    "notebook.compactView": false,
     "files.autoSave": "onFocusChange",
     "editor.fontFamily": "'JetBrainsMono Nerd Font','Iosevka Nerd Font','CaskaydiaCove Nerd Font','JetBrainsMono NF','CaskaydiaCove Nerd Font'",
     "editor.fontSize": 16,
@@ -140,7 +139,7 @@
     "window.commandCenter": false,
     "caps-lock-state.status_bar_text": "🔒 Caps Lock ON!A",
     "latex-workshop.bibtex-format.tab": "4 spaces",
-    "notebook.output.fontFamily": "Iosevka Nerd Font",
+    "notebook.output.fontFamily": "JetBrainsMono Nerd Font",
     "window.autoDetectColorScheme": true,
     "notebook.markup.fontSize": 14,
     "window.density.editorTabHeight": "compact",
@@ -169,12 +168,29 @@
     "MATLAB.installPath": "/usr/local/MATLAB/R2018b/",
     "matlab.mlintpath": "/usr/local/MATLAB/R2018b/bin/glnxa64/mlint",
     "matlab.matlabpath": "/usr/local/MATLAB/R2018b/bin/matlab",
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Gruber Darker",
     "terminal.integrated.commandsToSkipShell": [
         "matlab.interrupt"
     ],
     "MATLAB.matlabConnectionTiming": "onDemand",
     "editor.defaultFormatter": "AffenWiesel.matlab-formatter",
+    "[latex]": {
+        "editor.defaultFormatter": "James-Yu.latex-workshop"
+    },
+    "notebook.compactView": false,
+    "notebook.output.fontSize": 14,
+    "window.confirmSaveUntitledWorkspace": false,
+    "[arduino-output]": {
+
+    },
+    "arduino.path": "/usr/bin",
+    "arduino.commandPath": "arduino",
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.clang_format_style": "Mozilla",
+    "editor.indentSize": "tabSize",
+    "codeium.enableCodeLens": false,
     "workbench.activityBar.location": "hidden",
 }

@@ -4,8 +4,10 @@ vim.keymap.set("n", "<A-e>", vim.cmd.Ex, { desc = "Open Explorer" })
 vim.keymap.set("n", "<A-s>", vim.cmd.w, { desc = "Save File" })
 
 -- move line up and down and
-vim.keymap.set("n", "<A-k>", ":m -2 <CR>")
-vim.keymap.set("n", "<A-j>", ":m +1 <CR>")
+vim.keymap.set("n", "<A-k>", ":m -2<CR>")
+vim.keymap.set("n", "<A-j>", ":m +1<CR>")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "j", "gj")
 vim.keymap.set("n", "k", "gk")
 

@@ -33,3 +33,6 @@ _darcs
 \.config/dunst
 \.config/neofetch
 \.config/rofi
+\.config/ncmpcpp
+\.xmobarrc
+\.xmonad

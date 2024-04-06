@@ -1,6 +1,6 @@
 return {
    "hrsh7th/nvim-cmp",
-   event = "InsertEnter",
+   -- event = "InsertEnter",
    dependencies = {
       "hrsh7th/cmp-buffer", -- source for text in buffer
       "hrsh7th/cmp-path", -- source for file system paths
@@ -57,6 +57,7 @@ return {
             { name = "luasnip" }, -- snippets
             { name = "buffer" }, -- text within current buffer
             { name = "path" }, -- file system paths
+            { name = "codeium" },
          }),
          -- configure lspkind for vs-code like pictograms in completion menu
          formatting = {

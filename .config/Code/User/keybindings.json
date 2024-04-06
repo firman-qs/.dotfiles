@@ -4627,6 +4627,16 @@
         "key": "alt+s",
         "command": "matlab-in-vscode.runMatlabFile",
         "when": "editorTextFocus && editorLangId == 'matlab'"
+    },
+    {
+        "key": "alt+s",
+        "command": "jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !jupyter.havenativecells && !notebookEditorFocused"
     }
 ]
 // Here are other available commands: 

@@ -1,3 +1,17 @@
+-- return {
+--    "craftzdog/solarized-osaka.nvim",
+--    lazy = false,
+--    priority = 1000,
+--    opts = function()
+--       return {
+--          transparent = true,
+--       }
+--    end,
+--    config = function()
+--       vim.cmd([[colorscheme solarized-osaka]])
+--    end,
+-- }
+
 return {
    "olimorris/onedarkpro.nvim",
    priority = 1000, -- Ensure it loads first
